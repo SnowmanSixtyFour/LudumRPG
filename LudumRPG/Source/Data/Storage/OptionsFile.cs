@@ -15,7 +15,10 @@ namespace LudumRPG.Source.Data.Storage
 {
     public class OptionsFile : DataFile
     {
-        // TODO: Options { get; set; }
+        // Options
+        public int Width { get; set; }
+        public int Height { get; set; }
+        public bool Fullscreen { get; set; }
 
         public OptionsFile()
         {
@@ -24,7 +27,9 @@ namespace LudumRPG.Source.Data.Storage
 
         public override void Save()
         {
-            // TODO: Set Default Variables
+            // Set Default Variables
+            if (this.Width <= 0) this.Width = Global.defaultWidth;
+            if (this.Height <= 0) this.Height = Global.defaultHeight;
 
             // Save File
             base.Save();
@@ -38,7 +43,16 @@ namespace LudumRPG.Source.Data.Storage
                 String json = File.ReadAllText($@"C:\Users\{computerName}\Documents\My Games\{gameName}\{fileName}.json");
                 OptionsFile file = JsonSerializer.Deserialize<OptionsFile>(json);
 
-                // TODO: Load Saved Variables
+                // Load Options
+                this.Width = file.Width;
+                this.Height = file.Height;
+                this.Fullscreen = file.Fullscreen;
+
+                // If options file has invalid values
+                if (file.Width <= 0 || file.Height <= 0)
+                {
+                    Save();
+                }
             }
 
             // If file has errors or does not exist

@@ -33,11 +33,6 @@ namespace LudumRPG.Source.States
 
         // State variables
         public KeyboardState keyboard, previousKeyboard;
-
-        public MouseState mouse, previousMouse;
-        public Vector2 mouseDelta;
-        protected float MAXDELTA = Global.mouseDeltaMax;
-
         public GamePadState gamepad, previousGamepad;
 
         public int screenWidth, screenHeight;
@@ -69,10 +64,6 @@ namespace LudumRPG.Source.States
             OnUpdate(gameTime);
 
             // Update Controls
-
-            // Mouse Delta
-            mouseDelta = new Vector2(Math.Min(MAXDELTA, (previousMouse.X - mouse.X)), Math.Min(MAXDELTA, (previousMouse.Y - mouse.Y)));
-
             previousKeyboard = keyboard;
             previousGamepad = gamepad;
         }
@@ -89,7 +80,10 @@ namespace LudumRPG.Source.States
 
         public void SaveToOptions()
         {
-            // TODO: Update Properties in Options File
+            // Update Properties
+            options.Width = Global.windowWidth;
+            options.Height = Global.windowHeight;
+            options.Fullscreen = Global.fullscreen;
 
             // Save to File
             options.Save();

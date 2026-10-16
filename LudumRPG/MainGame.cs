@@ -115,6 +115,46 @@ namespace LudumRPG
 
             // Set Cam
             ChangeWindowSize(Global.windowWidth, Global.windowHeight);
+            UpdateFullscreen();
+        }
+
+        /// <summary>
+        /// Keeps the size of the window update, depending on fullscreen or windowed mode.
+        /// </summary>
+        public void UpdateFullscreen()
+        {
+            // Store Windowed Size
+            if (!graphics.IsFullScreen)
+            {
+                Global.windowWidth = this.GraphicsDevice.Viewport.Width;
+                Global.windowHeight = this.GraphicsDevice.Viewport.Height;
+            }
+
+            // Set Bool to False (so method only runs once)
+            Global.fullscreenChanged = false;
+
+            // Change Screen Size depending on Fullscreen Status
+            if (Global.fullscreen) // Fullscreen Mode
+            {
+                // Set Window to Monitor Size
+                graphics.PreferredBackBufferWidth = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
+                graphics.PreferredBackBufferHeight = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
+
+                // Apply Changes before Fullscreen Status is Set
+                graphics.ApplyChanges();
+            }
+            if (!Global.fullscreen) // Windowed Mode
+            {
+                // Set Window to Previous Windowed Size
+                graphics.PreferredBackBufferWidth = Global.windowWidth;
+                graphics.PreferredBackBufferHeight = Global.windowHeight;
+            }
+
+            // Update Fullscreen Mode for Window
+            this.graphics.IsFullScreen = Global.fullscreen;
+
+            // Apply Changes to Window
+            graphics.ApplyChanges();
         }
 
         // Update Global Variables

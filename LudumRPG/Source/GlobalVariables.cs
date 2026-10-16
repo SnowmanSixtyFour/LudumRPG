@@ -16,9 +16,13 @@ namespace LudumRPG.Source
 
         public static string windowName = "Ludum RPG";
 
+        public static readonly int
+            defaultWidth = 844,
+            defaultHeight = 480;
+
         public static int
-            windowWidth = 844,
-            windowHeight = 480;
+            windowWidth = defaultWidth,
+            windowHeight = defaultHeight;
 
         public static bool active = true;
 
@@ -32,10 +36,11 @@ namespace LudumRPG.Source
             renderInactive = true,
             pauseWhenInactive = true;
 
-        // Mouse
-        public static float
-            mouseDeltaMax = 6,
-            mouseSensitivity = 0.1f;
+        // Fullscreen
+        public static bool
+            fullscreen = false,
+
+            fullscreenChanged = false;
 
         // Game
 
@@ -64,8 +69,12 @@ namespace LudumRPG.Source
         // Set game options
         public static void SetOptions()
         {
-            // TODO: Initialize global variables as options
-            // Global.whatever = MainGame.options.whatever;
+            // Window Size
+            Global.windowWidth = MainGame.options.Width;
+            Global.windowHeight = MainGame.options.Height;
+
+            // Fullscreen
+            Global.fullscreen = MainGame.options.Fullscreen;
         }
 
         // Load game assets

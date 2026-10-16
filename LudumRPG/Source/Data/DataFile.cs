@@ -14,7 +14,7 @@ namespace LudumRPG.Source.Data
         // Properties
         public readonly String
             computerName = Environment.UserName,
-            gameName = "LudumRPG";
+            gameName = @"LudumRPG\LudumDare60"; // Keep game files in Ludum Dare 60 folder
 
         // File
         [JsonIgnore] public String fileName { get; set; }
