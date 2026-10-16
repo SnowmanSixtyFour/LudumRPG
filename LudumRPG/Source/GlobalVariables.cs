@@ -18,7 +18,10 @@ namespace LudumRPG.Source
 
         public static readonly int
             defaultWidth = 844,
-            defaultHeight = 480;
+            defaultHeight = 480,
+
+            resWidth = 256,
+            resHeight = 224;
 
         public static int
             windowWidth = defaultWidth,
@@ -49,10 +52,6 @@ namespace LudumRPG.Source
         public static bool
             paused = false;
 
-        // Cursor Size
-        public static int cursorPixels = 30; // Int (to be used for Width and Height)
-        public static Point cursorSize = new Point(cursorPixels, cursorPixels); // Point
-
         // Graphics
 
         public static bool shadersEnabled = false;
@@ -60,11 +59,18 @@ namespace LudumRPG.Source
         // Sprites
 
         public static Texture2D
+            // Util
             noImg,
-            cursor, cursorHighlight,
-            gio;
-        public static SpriteFont arial;
-        public static Effect crt;
+
+            // Title
+            titleBG,
+            logo;
+
+        public static SpriteFont
+            retro;
+
+        public static Effect
+            crt;
 
         // Set game options
         public static void SetOptions()
@@ -84,13 +90,12 @@ namespace LudumRPG.Source
 
             Global.noImg = content.Load<Texture2D>("Assets/Images/pixel");
 
-            Global.cursor = content.Load<Texture2D>("Assets/Images/Cursor");
-
-            Global.gio = content.Load<Texture2D>("Assets/Images/Giovanni");
+            Global.titleBG = content.Load<Texture2D>("Assets/Images/Title/titlePattern");
+            Global.logo = content.Load<Texture2D>("Assets/Images/Title/logo");
 
             // Fonts
 
-            Global.arial = content.Load<SpriteFont>("Assets/Fonts/Arial");
+            Global.retro = content.Load<SpriteFont>("Assets/Fonts/retro");
 
             // Shaders
 

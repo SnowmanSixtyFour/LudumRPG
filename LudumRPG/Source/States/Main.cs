@@ -11,17 +11,20 @@ namespace LudumRPG.Source.States
 {
     internal class Main : State
     {
-        private State currentState;
+        public State currentState;
 
-        private Level level;
+        // States
+        public Title title;
+        public Level level;
 
         public Main()
         {
             // Set States
+            title = new Title();
             level = new Level();
 
             // Set Current State
-            currentState = level;
+            currentState = title;
         }
 
         public override void OnUpdate(GameTime gameTime)
@@ -32,7 +35,21 @@ namespace LudumRPG.Source.States
                 // Toggle Pause
                 if (KeyPress(Keys.Escape))
                 {
-                    Global.paused = !Global.paused;
+                    // If in a valid state to pause
+                    if (currentState != title)
+                    {
+                        // Pause / Unpause Game
+                        Global.paused = !Global.paused;
+                    }
+                }
+            }
+
+            // Unpause automatically if not in a valid state to pause
+            if (Global.paused)
+            {
+                if (currentState == title)
+                {
+                    Global.paused = false;
                 }
             }
 
@@ -40,7 +57,7 @@ namespace LudumRPG.Source.States
             if (Global.pauseWhenInactive && !Global.active) Global.paused = true;
 
             // Update Current State
-            currentState.Update(gameTime);
+            currentState.Update(gameTime, this);
         }
 
         public override void OnDraw(SpriteBatch spriteBatch)

@@ -10,7 +10,7 @@ namespace LudumRPG.Source.Graphics
 {
     internal class Text
     {
-        protected SpriteFont font = Global.arial;
+        protected SpriteFont font = Global.retro;
         protected String text;
         protected Vector2
             position,

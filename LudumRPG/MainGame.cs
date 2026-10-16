@@ -115,7 +115,6 @@ namespace LudumRPG
 
             // Set Cam
             ChangeWindowSize(Global.windowWidth, Global.windowHeight);
-            UpdateFullscreen();
         }
 
         /// <summary>
@@ -175,7 +174,7 @@ namespace LudumRPG
             MainGame.gameTime = gameTime;
 
             // Update game
-            game.Update(gameTime);
+            game.Update(gameTime, game);
 
             base.Update(gameTime);
         }
