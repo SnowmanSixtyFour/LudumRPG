@@ -17,6 +17,10 @@ namespace LudumRPG.Source.States
 
         public Overworld()
         {
+            dialogHUD = new DialogHUD();
+
+            dialogHUD.setDialog(DialogStorage.intro);
+
             /*
             // Test Character
             giovanni = new Character(Global.gio, new Point(10, 200), new Point(48, 29), new Point(16, 29), Color.White);
@@ -28,10 +32,6 @@ namespace LudumRPG.Source.States
 
             debug = new Text(Global.arial, "", new Vector2(10, 10), Color.White, 1.0f);
             */
-
-            dialogHUD = new DialogHUD();
-
-            dialogHUD.setDialog(DialogStorage.intro);
         }
 
         public override void OnUpdate(GameTime gameTime)

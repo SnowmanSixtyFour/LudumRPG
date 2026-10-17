@@ -19,6 +19,9 @@ namespace LudumRPG.Source.States
         public Overworld overworld;
         public Battle battle;
 
+        // Overlay
+        private StaticSprite pauseOverlay;
+
         public Main()
         {
             // Set States
@@ -27,24 +30,14 @@ namespace LudumRPG.Source.States
 
             // Set Current State
             currentState = title;
+
+            // Set Overlay
+            pauseOverlay = new StaticSprite(null, new Rectangle(0, 0, Global.resWidth, Global.resHeight), Color.Black * 0.5f);
         }
 
         public override void OnUpdate(GameTime gameTime)
         {
-            // Pausing
-            if (canPause) // If Pausing is Possible
-            {
-                // Toggle Pause
-                if (KeyPress(Keys.Escape))
-                {
-                    // If in a valid state to pause
-                    if (currentState != title)
-                    {
-                        // Pause / Unpause Game
-                        Global.paused = !Global.paused;
-                    }
-                }
-            }
+            // --- Pausing ---
 
             // Unpause automatically if not in a valid state to pause
             if (Global.paused)
@@ -55,17 +48,47 @@ namespace LudumRPG.Source.States
                 }
             }
 
+            // If Pausing is Possible
+            if (canPause)
+            {
+                // Toggle Pause
+                if (PressPause())
+                {
+                    // If in a valid state to pause
+                    if (currentState != title)
+                    {
+                        // Pause / Unpause Game
+                        Global.paused = !Global.paused;
+                    }
+                }
+            }
+
             // Pause Game when Inactive
             if (Global.pauseWhenInactive && !Global.active) Global.paused = true;
 
+            // --- State ---
+
             // Update Current State
-            currentState.Update(gameTime, this);
+            if (!canPause ||
+                canPause && !Global.paused)
+            {
+                currentState.Update(gameTime, this);
+            }
         }
 
         public override void OnDraw(SpriteBatch spriteBatch)
         {
             // Draw Current State
             currentState.OnDraw(spriteBatch);
+
+            // Pause Overlay
+            if (canPause)
+            {
+                if (Global.paused)
+                {
+                    pauseOverlay.Draw(spriteBatch);
+                }
+            }
         }
     }
 }

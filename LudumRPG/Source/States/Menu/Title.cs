@@ -17,6 +17,10 @@ namespace LudumRPG.Source.States.Menu
 
         private Text pressStart;
 
+        private String
+            pressStartText = "Press [Z] to Start!",
+            pressStartTextAlt = "Press [A] to Start!";
+
         float startTimer = 0f;
         private bool startVisible = true;
 
@@ -26,19 +30,28 @@ namespace LudumRPG.Source.States.Menu
             
             logo = new Logo(new Point(20, 50));
 
-            pressStart = new Text(Global.retro, "Press Start!", new Vector2(86, 160), Color.White);
+            pressStart = new Text(Global.retro, pressStartText, new Vector2(58, 160), Color.White);
         }
 
         public override void OnUpdate(GameTime gameTime)
         {
+            // Update Sprites
+            logo.Update(gameTime);
+
+            if (ControllerConnected())
+            {
+                pressStart.setText(pressStartTextAlt);
+            }
+            else
+            {
+                pressStart.setText(pressStartText);
+            }
+
             // Update BG
             float bgOffset = bgScrollSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
 
             BG.xOffset += bgOffset;
             BG.yOffset += bgOffset;
-
-            // Update Sprites
-            logo.Update(gameTime);
 
             // Go to Overworld
             if (PressConfirm())

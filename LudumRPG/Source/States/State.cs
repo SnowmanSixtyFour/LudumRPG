@@ -194,15 +194,21 @@ namespace LudumRPG.Source.States
 
         // UI Controls
 
+        public bool PressPause()
+        {
+            if (KeyPress(Keys.Escape) || ButtonPress(Buttons.Start)) return true;
+            else return false;
+        }
+
         public bool PressConfirm()
         {
-            if (KeyPress(Keys.Z) || KeyPress(Keys.Enter) || ButtonPress(Buttons.A) || ButtonPress(Buttons.Start)) return true;
+            if (KeyPress(Keys.Z) || KeyPress(Keys.Enter) || ButtonPress(Buttons.A)) return true;
             else return false;
         }
 
         public bool PressCancel()
         {
-            if (KeyPress(Keys.X) || KeyPress(Keys.Escape) || ButtonPress(Buttons.B)) return true;
+            if (KeyPress(Keys.X) || KeyPress(Keys.Back) || ButtonPress(Buttons.B)) return true;
             else return false;
         }
 
