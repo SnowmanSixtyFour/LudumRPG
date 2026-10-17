@@ -24,6 +24,27 @@ namespace LudumRPGLauncher.Source.GUI
             buttonWidth = 120, buttonHeight = 25,
             buttonX = 10;
 
+        // GUI
+        private Button
+            startButton,
+            fullscreenButton,
+            crtFilterButton;
+        private ComboBox
+            aspectRatioList;
+        private Label
+            aspectRatioLabel;
+
+        private int
+            defaultWidth1 = 768,
+            defaultWidth2 = 840,
+            defaultWidth3 = 1080,
+            defaultWidth4 = 1280,
+
+            defaultHeight1 = 672,
+            defaultHeight2 = 735,
+            defaultHeight3 = 945,
+            defaultHeight4 = 1120;
+
         // Options
         private int
             gameWidth = 768,
@@ -39,12 +60,81 @@ namespace LudumRPGLauncher.Source.GUI
             Load();
 
             // Set Buttons
-            AddButton("Start Game", new Point(buttonX, 10), StartGame);
+            startButton = new Button
+            {
+                Left = buttonX,
+                Top = 10,
+                Width = buttonWidth,
+                Height = buttonHeight,
+                Text = "Start Game"
+            };
+            startButton.Click += StartGame;
+
+            fullscreenButton = new Button
+            {
+                Left = buttonX,
+                Top = 100,
+                Width = buttonWidth,
+                Height = buttonHeight,
+                Text = "Fullscreen"
+            };
+            fullscreenButton.Click += FullscreenChanged;
+
+            crtFilterButton = new Button
+            {
+                Left = buttonX,
+                Top = 130,
+                Width = buttonWidth,
+                Height = buttonHeight,
+                Text = "CRT Filter"
+            };
+            crtFilterButton.Click += CRTFilterChanged;
+
+            aspectRatioLabel = new Label
+            {
+                Left = buttonX,
+                Top = 172,
+                Height = 15,
+                Text = "Aspect Ratio"
+            };
+
+            aspectRatioList = new ComboBox
+            {
+                Left = buttonX,
+                Top = 190,
+                Width = buttonWidth,
+                Height = buttonHeight
+            };
+            aspectRatioList.DropDownStyle = ComboBoxStyle.DropDownList; // Prevent Editing
+            
+            aspectRatioList.Items.Add($"{defaultWidth1}x{defaultHeight1}");
+            aspectRatioList.Items.Add($"{defaultWidth2}x{defaultHeight2}");
+            aspectRatioList.Items.Add($"{defaultWidth3}x{defaultHeight3}");
+            aspectRatioList.Items.Add($"{defaultWidth4}x{defaultHeight4}");
+
+            aspectRatioList.SelectedItem = aspectRatioList.Items[0]; // Default Item is First
+
+            // Keep Button Text Updated
+            UpdateButtonText();
+
+            // Add Objects to Controls
+            form.Controls.Add(startButton);
+            form.Controls.Add(fullscreenButton);
+            form.Controls.Add(crtFilterButton);
+
+            form.Controls.Add(aspectRatioLabel);
+            form.Controls.Add(aspectRatioList);
         }
 
-        // Button Clicks
+        private void UpdateButtonText()
+        {
+            // Update Text of Option Buttons
 
-        private void StartGame()
+            fullscreenButton.Text = ("Fullscreen: " + fullscreen);
+            crtFilterButton.Text = ("CRT Filter: " + crtFilter);
+        }
+
+        private void StartGame(object sender, EventArgs e)
         {
             // Save Launcher Options
             Save();
@@ -68,33 +158,51 @@ namespace LudumRPGLauncher.Source.GUI
             }
         }
 
-        // Objects
-
-        public void AddButton(String text, Point position, Action action)
+        private void FullscreenChanged(object sender, EventArgs e)
         {
-            Button btn = new Button
-            {
-                Text = text,
-                Left = position.X,
-                Top = position.Y,
-                Width = buttonWidth,
-                Height = buttonHeight
-            };
+            fullscreen = !fullscreen;
 
-            btn.Click += (s, e) => action();
-            btn.TabStop = false;
-
-            form.Controls.Add(btn);
+            Save();
         }
 
-        public void SetButtonText(Button btn, String newText)
+        private void CRTFilterChanged(object sender, EventArgs e)
         {
+            crtFilter = !crtFilter;
+
+            Save();
         }
 
-        // File
+        // Button Clicks
+
+        // File Saving and Loading
 
         public void Save()
         {
+            // Update Text of Buttons
+            UpdateButtonText();
+
+            // Update Aspect Ratio
+            if (aspectRatioList.SelectedItem == aspectRatioList.Items[0])
+            {
+                this.gameWidth = defaultWidth1;
+                this.gameHeight = defaultHeight1;
+            }
+            if (aspectRatioList.SelectedItem == aspectRatioList.Items[1])
+            {
+                this.gameWidth = defaultWidth2;
+                this.gameHeight = defaultHeight2;
+            }
+            if (aspectRatioList.SelectedItem == aspectRatioList.Items[2])
+            {
+                this.gameWidth = defaultWidth3;
+                this.gameHeight = defaultHeight3;
+            }
+            if (aspectRatioList.SelectedItem == aspectRatioList.Items[3])
+            {
+                this.gameWidth = defaultWidth4;
+                this.gameHeight = defaultHeight4;
+            }
+
             try
             {
                 // Save Data in Launcher

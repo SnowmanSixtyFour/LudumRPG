@@ -16,7 +16,7 @@ namespace LudumRPGLauncher.Source
         public static String launcherVersion = "0.1.0";
 
         public static int
-            windowWidth = 800,
-            windowHeight = 400;
+            windowWidth = 500,
+            windowHeight = 350;
     }
 }

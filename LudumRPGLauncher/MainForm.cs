@@ -1,4 +1,8 @@
-﻿using System;
+﻿// The launcher made quick for the Ludum Dare 60 release of Ludum RPG. Mainly to mess with options.
+
+// The code is pretty rough, I'll refine it later on. -Snowman64
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
