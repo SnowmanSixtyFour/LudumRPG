@@ -1,11 +1,16 @@
 # Auto detect text files and perform LF normalization
 * text=auto
 
+# Visual Studio
+.vs/
+
 # Build
 /LudumRPG/bin
 /LudumRPG/obj
 /LudumRPG/Content/bin
 /LudumRPG/Content/obj
-
-# Visual Studio
-.vs/
+/LudumRPGLauncher/.vs
+/LudumRPGLauncher/packages
+/LudumRPGLauncher/DDELevelEditor/.vs
+/LudumRPGLauncher/DDELevelEditor/bin
+/LudumRPGLauncher/DDELevelEditor/obj
