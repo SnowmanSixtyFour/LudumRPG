@@ -57,7 +57,6 @@ namespace LudumRPGLauncher.Source.GUI
         {
             // Set Form
             this.form = form;
-            Load();
 
             // Set Buttons
             startButton = new Button
@@ -112,9 +111,8 @@ namespace LudumRPGLauncher.Source.GUI
             aspectRatioList.Items.Add($"{defaultWidth3}x{defaultHeight3}");
             aspectRatioList.Items.Add($"{defaultWidth4}x{defaultHeight4}");
 
-            aspectRatioList.SelectedItem = aspectRatioList.Items[0]; // Default Item is First
-
-            // Keep Button Text Updated
+            // Load Options into Launcher
+            Load();
             UpdateButtonText();
 
             // Add Objects to Controls
@@ -249,6 +247,12 @@ namespace LudumRPGLauncher.Source.GUI
                     fullscreen = root.GetProperty("Fullscreen").GetBoolean();
                     crtFilter = root.GetProperty("CRTFilter").GetBoolean();
                 }
+
+                // Set Aspect Ratio List Item
+                if (gameWidth == defaultWidth1 && gameHeight == defaultHeight1) aspectRatioList.SelectedItem = aspectRatioList.Items[0];
+                if (gameWidth == defaultWidth2 && gameHeight == defaultHeight2) aspectRatioList.SelectedItem = aspectRatioList.Items[1];
+                if (gameWidth == defaultWidth3 && gameHeight == defaultHeight3) aspectRatioList.SelectedItem = aspectRatioList.Items[2];
+                if (gameWidth == defaultWidth4 && gameHeight == defaultHeight4) aspectRatioList.SelectedItem = aspectRatioList.Items[3];
             }
 
             // Create new File

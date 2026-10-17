@@ -128,6 +128,9 @@ namespace LudumRPG
 
             // Set Overlay
             crtVignette = new StaticSprite(Global.crtVignette, new Rectangle(0, 0, Global.resWidth, Global.resHeight), Color.White);
+
+            // Make sure to check if game should be in fullscreen on start
+            UpdateFullscreen();
         }
 
         /// <summary>
