@@ -39,22 +39,22 @@ namespace LudumRPG.Source.States
         {
             // --- Pausing ---
 
-            // Unpause automatically if not in a valid state to pause
-            if (Global.paused)
-            {
-                if (currentState == title)
-                {
-                    Global.paused = false;
-                }
-            }
-
             // If Pausing is Possible
             if (canPause)
             {
+                // Pause Game when Inactive
+                if (Global.pauseWhenInactive && !Global.active)
+                {
+                    // If in a valid state to pause
+                    if (currentState != title)
+                    {
+                        Global.paused = true;
+                    }
+                }
+
                 // Toggle Pause
                 if (PressPause())
                 {
-                    // If in a valid state to pause
                     if (currentState != title)
                     {
                         // Pause / Unpause Game
@@ -62,9 +62,6 @@ namespace LudumRPG.Source.States
                     }
                 }
             }
-
-            // Pause Game when Inactive
-            if (Global.pauseWhenInactive && !Global.active) Global.paused = true;
 
             // --- State ---
 

@@ -11,6 +11,5 @@
 /LudumRPG/Content/obj
 /LudumRPGLauncher/.vs
 /LudumRPGLauncher/packages
-/LudumRPGLauncher/DDELevelEditor/.vs
-/LudumRPGLauncher/DDELevelEditor/bin
-/LudumRPGLauncher/DDELevelEditor/obj
+/LudumRPGLauncher/bin
+/LudumRPGLauncher/obj
