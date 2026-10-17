@@ -1,0 +1,11 @@
+C:\Users\CJMT\Documents\GitHub\LudumRPG\LudumRPGLauncher\bin\Debug\LudumRPGLauncher.exe.config
+C:\Users\CJMT\Documents\GitHub\LudumRPG\LudumRPGLauncher\bin\Debug\LudumRPGLauncher.exe
+C:\Users\CJMT\Documents\GitHub\LudumRPG\LudumRPGLauncher\bin\Debug\LudumRPGLauncher.pdb
+C:\Users\CJMT\Documents\GitHub\LudumRPG\LudumRPGLauncher\obj\Debug\LudumRPGLauncher.csproj.AssemblyReference.cache
+C:\Users\CJMT\Documents\GitHub\LudumRPG\LudumRPGLauncher\obj\Debug\LudumRPGLauncher.MainForm.resources
+C:\Users\CJMT\Documents\GitHub\LudumRPG\LudumRPGLauncher\obj\Debug\LudumRPGLauncher.Properties.Resources.resources
+C:\Users\CJMT\Documents\GitHub\LudumRPG\LudumRPGLauncher\obj\Debug\LudumRPGLauncher.csproj.GenerateResource.cache
+C:\Users\CJMT\Documents\GitHub\LudumRPG\LudumRPGLauncher\obj\Debug\LudumRPGLauncher.csproj.CoreCompileInputs.cache
+C:\Users\CJMT\Documents\GitHub\LudumRPG\LudumRPGLauncher\obj\Debug\LudumRPGLauncher.exe
+C:\Users\CJMT\Documents\GitHub\LudumRPG\LudumRPGLauncher\obj\Debug\LudumRPGLauncher.pdb
+C:\Users\CJMT\Documents\GitHub\LudumRPG\LudumRPGLauncher\obj\Debug\LudumRPGLauncher.exe.config
