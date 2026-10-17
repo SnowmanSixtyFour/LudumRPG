@@ -5,6 +5,7 @@ using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -104,6 +105,24 @@ namespace LudumRPG.Source
             // Shaders
 
             Global.crt = content.Load<Effect>("Assets/Shaders/CRTFilter");
+
+            // Sounds
+
+            SFX.dialog = content.Load<SoundEffect>("Assets/Audio/SFX/Dialog/dialog");
+            SFX.dialogContinue = content.Load<SoundEffect>("Assets/Audio/SFX/Dialog/dialogContinue");
         }
+    }
+
+    /*
+     * It probably isn't good practice,
+     * but I separate certain assets like sound effects
+     * in their own internal class to make naming easier
+     */
+
+    internal class SFX
+    {
+        public static SoundEffect
+            // Dialog
+            dialog, dialogContinue;
     }
 }

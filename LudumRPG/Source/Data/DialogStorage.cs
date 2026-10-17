@@ -23,10 +23,6 @@ namespace LudumRPG.Source.Data
     {
         public static Dialog test;
 
-        public DialogStorage()
-        {
-        }
-
         public static void LoadDialog()
         {
             test = new Dialog("Test");

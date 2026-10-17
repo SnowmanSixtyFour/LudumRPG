@@ -46,7 +46,7 @@ namespace LudumRPG.Source.Objects.Overworld.UI
             dialogBox = new StaticSprite(null, new Rectangle(0, 148, Global.resWidth, Global.resHeight), Color.Black * 0.5f);
             portrait = new StaticSprite(null, new Rectangle(Global.resWidth - 72, 154, 64, 64), invisible);
 
-            name = new Text("", new Vector2(12, 154), Color.White);
+            name = new Text("", new Vector2(15, 154), Color.White);
             line = new Text("", new Vector2(22, 170), Color.White);
         }
 
@@ -89,7 +89,7 @@ namespace LudumRPG.Source.Objects.Overworld.UI
                         // Update Current Character of Dialog
                         currentChar++;
 
-                        // TODO: Play Dialog SFX
+                        SFX.dialog.Play();
 
                         // Display Text
                         this.line.setText(typewriterText);
@@ -179,7 +179,7 @@ namespace LudumRPG.Source.Objects.Overworld.UI
                     ResetTypewriter();
                     steps++;
 
-                    // TODO: Add Dialog Continuing SFX
+                    SFX.dialogContinue.Play();
                 }
                 // Skip Dialog
                 else
