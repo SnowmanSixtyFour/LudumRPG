@@ -1,12 +1,14 @@
-﻿using System;
+﻿using LudumRPG.Source.Graphics;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
-using LudumRPG.Source.Graphics;
+using Windows.Gaming.Input;
+using Windows.Gaming.UI;
 
 namespace LudumRPG.Source.Objects
 {
@@ -32,6 +34,7 @@ namespace LudumRPG.Source.Objects
 
         // Controls
         public KeyboardState keyboard, previousKeyboard;
+        public GamePadState gamepad, previousGamepad;
 
         public Character(Texture2D texture, Point location, Point size, Point sheetSize, Color color)
         {
@@ -72,11 +75,13 @@ namespace LudumRPG.Source.Objects
         {
             // Controls
             keyboard = Keyboard.GetState();
+            gamepad = GamePad.GetState(PlayerIndex.One);
 
             // Override Update
             OnUpdate(gameTime);
 
             previousKeyboard = keyboard;
+            previousGamepad = gamepad;
         }
 
         public virtual void OnUpdate(GameTime gameTime)
@@ -194,6 +199,34 @@ namespace LudumRPG.Source.Objects
             if (keyboard.IsKeyDown(key))
             {
                 return true;
+            }
+            else return false;
+        }
+
+        public bool ButtonPress(Buttons button)
+        {
+            if (gamepad.IsConnected)
+            {
+                if (gamepad.IsButtonUp(button) && previousGamepad.IsButtonDown(button))
+                {
+                    return true;
+                }
+                else return false;
+
+            }
+            else return false;
+        }
+
+        public bool ButtonDown(Buttons button)
+        {
+            if (gamepad.IsConnected)
+            {
+                if (gamepad.IsButtonDown(button))
+                {
+                    return true;
+                }
+                else return false;
+
             }
             else return false;
         }
