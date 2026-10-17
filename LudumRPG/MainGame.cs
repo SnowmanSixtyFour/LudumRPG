@@ -19,6 +19,7 @@ using Microsoft.Xna.Framework.Input;
 using LudumRPG.Source;
 using LudumRPG.Source.Data.Storage;
 using LudumRPG.Source.States;
+using LudumRPG.Source.Data;
 
 namespace LudumRPG
 {
@@ -100,6 +101,9 @@ namespace LudumRPG
 
             // Load Content
             Global.LoadContent(Content);
+
+            // Load Dialog
+            DialogStorage.LoadDialog();
 
             // Set game state
             game = new Main();

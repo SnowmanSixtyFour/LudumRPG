@@ -54,6 +54,8 @@ namespace LudumRPG.Source
         public static bool
             paused = false;
 
+        public static float dialogSpeed = 0.02f;
+
         // Graphics
 
         public static bool shadersEnabled = false;

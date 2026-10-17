@@ -4,13 +4,16 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using LudumRPG.Source.Graphics;
 using LudumRPG.Source.Objects;
+using LudumRPG.Source.Objects.Overworld.UI;
+using LudumRPG.Source.Data.Story;
+using LudumRPG.Source.Data;
+using System.Diagnostics;
 
 namespace LudumRPG.Source.States
 {
     internal class Overworld : State
     {
-        Character giovanni;
-        Text debug;
+        DialogHUD dialogHUD;
 
         public Overworld()
         {
@@ -25,10 +28,22 @@ namespace LudumRPG.Source.States
 
             debug = new Text(Global.arial, "", new Vector2(10, 10), Color.White, 1.0f);
             */
+
+            dialogHUD = new DialogHUD();
+
+            dialogHUD.setDialog(DialogStorage.test);
         }
 
         public override void OnUpdate(GameTime gameTime)
         {
+            dialogHUD.Update(gameTime);
+
+            // Advance through Dialog
+            if (PressConfirm())
+            {
+                dialogHUD.Proceed();
+            }
+
             /*
             // Text
             debug.setText("X: " + giovanni.X
@@ -77,11 +92,14 @@ namespace LudumRPG.Source.States
 
         public override void OnReset()
         {
+            dialogHUD.Hide();
         }
 
         public override void OnDraw(SpriteBatch spriteBatch)
         {
             graphicsDevice.Clear(Color.CornflowerBlue);
+
+            dialogHUD.Draw(spriteBatch);
         }
     }
 }
