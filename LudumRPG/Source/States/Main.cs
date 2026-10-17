@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using LudumRPG.Source.Graphics;
 using LudumRPG.Source.Objects;
+using LudumRPG.Source.States.Menu;
 
 namespace LudumRPG.Source.States
 {
@@ -15,13 +16,14 @@ namespace LudumRPG.Source.States
 
         // States
         public Title title;
-        public Level level;
+        public Overworld overworld;
+        public Battle battle;
 
         public Main()
         {
             // Set States
             title = new Title();
-            level = new Level();
+            overworld = new Overworld();
 
             // Set Current State
             currentState = title;

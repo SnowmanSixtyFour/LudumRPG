@@ -6,7 +6,7 @@ using LudumRPG.Source.Graphics;
 using LudumRPG.Source.Objects;
 using LudumRPG.Source.Objects.Title;
 
-namespace LudumRPG.Source.States
+namespace LudumRPG.Source.States.Menu
 {
     internal class Title : State
     {
@@ -40,14 +40,14 @@ namespace LudumRPG.Source.States
             // Update Sprites
             logo.Update(gameTime);
 
-            // Go to Level
+            // Go to Overworld
             if (PressConfirm())
             {
-                SwitchState(main.level);
+                SwitchState(main.overworld);
             }
 
             // Press Start Flicker
-            startTimer += (float)gameTime.ElapsedGameTime.Milliseconds;
+            startTimer += gameTime.ElapsedGameTime.Milliseconds;
 
             if (startTimer >= 500f)
             {
@@ -55,6 +55,10 @@ namespace LudumRPG.Source.States
                 
                 startTimer = 0f;
             }
+        }
+
+        public override void OnReset()
+        {
         }
 
         public override void OnDraw(SpriteBatch spriteBatch)

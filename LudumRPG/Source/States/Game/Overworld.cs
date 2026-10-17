@@ -7,12 +7,12 @@ using LudumRPG.Source.Objects;
 
 namespace LudumRPG.Source.States
 {
-    internal class Level : State
+    internal class Overworld : State
     {
         Character giovanni;
         Text debug;
 
-        public Level()
+        public Overworld()
         {
             /*
             // Test Character
@@ -73,6 +73,10 @@ namespace LudumRPG.Source.States
                 Global.shadersEnabled = !Global.shadersEnabled;
             }
             */
+        }
+
+        public override void OnReset()
+        {
         }
 
         public override void OnDraw(SpriteBatch spriteBatch)
