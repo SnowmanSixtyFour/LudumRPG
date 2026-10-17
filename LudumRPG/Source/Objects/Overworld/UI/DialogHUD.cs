@@ -33,6 +33,7 @@ namespace LudumRPG.Source.Objects.Overworld.UI
             lowering = false,
             heightening = false;
         public int currentLine = 0;
+        private Color invisible = (Color.White * 0f);
 
         // Typewriter
         private String typewriterText = "";
@@ -43,7 +44,7 @@ namespace LudumRPG.Source.Objects.Overworld.UI
         public DialogHUD()
         {
             dialogBox = new StaticSprite(null, new Rectangle(0, 148, Global.resWidth, Global.resHeight), Color.Black * 0.5f);
-            portrait = new StaticSprite(null, new Rectangle(Global.resWidth - 72, 154, 64, 64), Color.White);
+            portrait = new StaticSprite(null, new Rectangle(Global.resWidth - 72, 154, 64, 64), invisible);
 
             name = new Text("", new Vector2(12, 154), Color.White);
             line = new Text("", new Vector2(22, 170), Color.White);
@@ -63,6 +64,18 @@ namespace LudumRPG.Source.Objects.Overworld.UI
             {
                 // Set Name
                 this.name.setText(dialog.Lines[currentLine].Name);
+
+                // Set Portrait
+                if (dialog.Lines[currentLine].Portrait != null)
+                {
+                    this.portrait.SetTexture(dialog.Lines[currentLine].Portrait);
+
+                    this.portrait.SetColor(Color.White);
+                }
+                else
+                {
+                    this.portrait.SetColor(invisible);
+                }
 
                 // Set Text to Current Line in Typewriter Text
                 if (!typewriterFinished)

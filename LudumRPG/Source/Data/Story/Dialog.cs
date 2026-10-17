@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Xna.Framework.Graphics;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +9,7 @@ namespace LudumRPG.Source.Data.Story
 {
     internal class Dialog
     {
-        public String Name { get; set; }
+        public String Name { get; private set; }
         public List<DialogLine> Lines { get; set; }
 
         public Dialog(String name)
