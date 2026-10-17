@@ -10,15 +10,23 @@ namespace LudumRPG.Source.States
 {
     internal class Title : State
     {
-        private Logo logo;
-
         private StaticSprite BG;
         private float bgScrollSpeed = 30.0f;
+
+        private Logo logo;
+
+        private Text pressStart;
+
+        float startTimer = 0f;
+        private bool startVisible = true;
 
         public Title()
         {
             BG = new StaticSprite(Global.titleBG, new Rectangle(new Point(0, 0), new Point(Global.windowWidth, Global.windowHeight)), Color.White, true);
+            
             logo = new Logo(new Point(20, 50));
+
+            pressStart = new Text(Global.retro, "Press Start!", new Vector2(86, 160), Color.White);
         }
 
         public override void OnUpdate(GameTime gameTime)
@@ -37,6 +45,16 @@ namespace LudumRPG.Source.States
             {
                 SwitchState(main.level);
             }
+
+            // Press Start Flicker
+            startTimer += (float)gameTime.ElapsedGameTime.Milliseconds;
+
+            if (startTimer >= 500f)
+            {
+                startVisible = !startVisible;
+                
+                startTimer = 0f;
+            }
         }
 
         public override void OnDraw(SpriteBatch spriteBatch)
@@ -44,6 +62,8 @@ namespace LudumRPG.Source.States
             BG.Draw(spriteBatch);
 
             logo.Draw(spriteBatch);
+
+            if (startVisible) pressStart.Draw(spriteBatch);
         }
     }
 }

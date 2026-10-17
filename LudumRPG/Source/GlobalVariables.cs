@@ -17,15 +17,17 @@ namespace LudumRPG.Source
         public static string windowName = "Ludum RPG";
 
         public static readonly int
-            defaultWidth = 844,
-            defaultHeight = 480,
-
+            // Draw Resolution
             resWidth = 256,
-            resHeight = 224;
+            resHeight = 224,
+
+            // Window Size
+            displayWidth = 768,
+            displayHeight = 672;
 
         public static int
-            windowWidth = defaultWidth,
-            windowHeight = defaultHeight;
+            windowWidth = displayWidth,
+            windowHeight = displayHeight;
 
         public static bool active = true;
 

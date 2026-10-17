@@ -28,8 +28,8 @@ namespace LudumRPG.Source.Data.Storage
         public override void Save()
         {
             // Set Default Variables
-            if (this.Width <= 0) this.Width = Global.defaultWidth;
-            if (this.Height <= 0) this.Height = Global.defaultHeight;
+            if (this.Width <= 0) this.Width = Global.displayWidth;
+            if (this.Height <= 0) this.Height = Global.displayHeight;
 
             // Save File
             base.Save();
