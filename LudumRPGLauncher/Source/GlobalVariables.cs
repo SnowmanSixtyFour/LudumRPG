@@ -14,5 +14,9 @@ namespace LudumRPGLauncher.Source
         public static String windowName = "Ludum RPG Launcher";
 
         public static String launcherVersion = "0.1.0";
+
+        public static int
+            windowWidth = 800,
+            windowHeight = 400;
     }
 }

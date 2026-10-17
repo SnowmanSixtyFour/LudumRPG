@@ -8,7 +8,10 @@
 // https://ldjam.com/events/ludum-dare/60
 
 // Special Thanks
-// CRT Scanline Shaders (Public Domain) - Timothy Lottes
+// CRT Scanline Shaders - Timothy Lottes
+// jsfxr SFX Generator - Eric Fredricksen
+
+// All assets and programs in this list are free to use under the public domain.
 
 using System;
 using System.Diagnostics;
