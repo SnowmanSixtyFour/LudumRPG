@@ -20,6 +20,7 @@ using LudumRPG.Source;
 using LudumRPG.Source.Data.Files;
 using LudumRPG.Source.States;
 using LudumRPG.Source.Data;
+using LudumRPG.Source.Graphics;
 
 namespace LudumRPG
 {
@@ -34,6 +35,8 @@ namespace LudumRPG
 
         private Main game;
         public static OptionsFile options = new OptionsFile();
+
+        private StaticSprite crtVignette;
 
         public MainGame()
         {
@@ -69,7 +72,7 @@ namespace LudumRPG
             options.Load();
 
             // Set Properties from Options
-            Global.SetOptions();
+            Global.LoadOptions();
 
             Debug.Print("Options loaded.");
 
@@ -119,6 +122,9 @@ namespace LudumRPG
 
             // Set Cam
             ChangeWindowSize(Global.windowWidth, Global.windowHeight);
+
+            // Set Overlay
+            crtVignette = new StaticSprite(Global.crtVignette, new Rectangle(0, 0, Global.resWidth, Global.resHeight), Color.White);
         }
 
         /// <summary>
@@ -203,6 +209,12 @@ namespace LudumRPG
 
                 // Draw Game
                 game.Draw(spriteBatch);
+
+                // CRT Filter Overlay
+                if (Global.crtFilter)
+                {
+                    crtVignette.Draw(spriteBatch);
+                }
 
                 // End SpriteBatch
                 spriteBatch.End();

@@ -20,7 +20,7 @@ namespace LudumRPG.Source.Graphics
         public int Y { get { return destRect.Y; } set { destRect.Y = value; } }
 
         // Tiled Variables
-        public bool tiled; // If sprite is tiled
+        public bool tiled = false; // If sprite is tiled
         public float xOffset, yOffset; // Offset values for tiled scrolling
 
         public StaticSprite(Texture2D texture, Rectangle rect, Color color, bool tiled = false)

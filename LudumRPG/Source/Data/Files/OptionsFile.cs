@@ -19,6 +19,7 @@ namespace LudumRPG.Source.Data.Files
         public int Width { get; set; }
         public int Height { get; set; }
         public bool Fullscreen { get; set; }
+        public bool CRTFilter { get; set; }
 
         public OptionsFile()
         {
@@ -47,6 +48,7 @@ namespace LudumRPG.Source.Data.Files
                 this.Width = file.Width;
                 this.Height = file.Height;
                 this.Fullscreen = file.Fullscreen;
+                this.CRTFilter = file.CRTFilter;
 
                 // If options file has invalid values
                 if (file.Width <= 0 || file.Height <= 0)

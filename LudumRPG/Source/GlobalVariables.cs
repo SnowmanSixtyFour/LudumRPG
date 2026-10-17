@@ -59,7 +59,7 @@ namespace LudumRPG.Source
 
         // Graphics
 
-        public static bool shadersEnabled = false;
+        public static bool crtFilter = false;
 
         // Sprites
 
@@ -69,7 +69,10 @@ namespace LudumRPG.Source
 
             // Title
             titleBG,
-            logo;
+            logo,
+
+            // Overlay,
+            crtVignette;
 
         public static SpriteFont
             retro;
@@ -78,7 +81,7 @@ namespace LudumRPG.Source
             crt;
 
         // Set game options
-        public static void SetOptions()
+        public static void LoadOptions()
         {
             // Window Size
             Global.windowWidth = MainGame.options.Width;
@@ -86,6 +89,9 @@ namespace LudumRPG.Source
 
             // Fullscreen
             Global.fullscreen = MainGame.options.Fullscreen;
+
+            // Filters
+            Global.crtFilter = MainGame.options.CRTFilter;
         }
 
         // Load game assets
@@ -97,6 +103,8 @@ namespace LudumRPG.Source
 
             Global.titleBG = content.Load<Texture2D>("Assets/Images/Title/titlePattern");
             Global.logo = content.Load<Texture2D>("Assets/Images/Title/logo");
+
+            Global.crtVignette = content.Load<Texture2D>("Assets/Images/Overlay/crtVignette");
 
             // Fonts
 

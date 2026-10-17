@@ -59,7 +59,7 @@ namespace LudumRPG.Source.Objects
                 SamplerState.PointClamp,
                 DepthStencilState.None,
                 RasterizerState.CullCounterClockwise,
-                effect: Global.shadersEnabled ? Global.crt : null);
+                effect: Global.crtFilter ? Global.crt : null);
             spriteBatch.Draw(target, destRect, Color.White);
             spriteBatch.End();
         }
