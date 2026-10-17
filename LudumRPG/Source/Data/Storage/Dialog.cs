@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LudumRPG.Source.Data.Story
+namespace LudumRPG.Source.Data.Storage
 {
     internal class Dialog
     {

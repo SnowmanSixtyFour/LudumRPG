@@ -1,6 +1,6 @@
 ﻿using LudumRPG.Source;
 using LudumRPG.Source.Data;
-using LudumRPG.Source.Data.Story;
+using LudumRPG.Source.Data.Storage;
 using LudumRPG.Source.Graphics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;

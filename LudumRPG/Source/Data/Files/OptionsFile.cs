@@ -11,7 +11,7 @@ using Microsoft.Xna.Framework.Input;
 using LudumRPG.Source;
 using LudumRPG.Source.Data;
 
-namespace LudumRPG.Source.Data.Storage
+namespace LudumRPG.Source.Data.Files
 {
     public class OptionsFile : DataFile
     {

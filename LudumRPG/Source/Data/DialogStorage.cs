@@ -15,7 +15,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using LudumRPG.Source.Data.Story;
+using LudumRPG.Source.Data.Storage;
 
 namespace LudumRPG.Source.Data
 {

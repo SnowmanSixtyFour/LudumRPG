@@ -21,7 +21,7 @@ using Windows.Gaming.UI;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using LudumRPG.Source.Data.Storage;
+using LudumRPG.Source.Data.Files;
 using LudumRPG.Source.Objects;
 
 namespace LudumRPG.Source.States

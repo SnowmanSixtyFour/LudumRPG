@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace LudumRPG.Source.Data.Story
+namespace LudumRPG.Source.Data.Storage
 {
     internal class DialogLine
     {

@@ -5,7 +5,7 @@ using Microsoft.Xna.Framework.Input;
 using LudumRPG.Source.Graphics;
 using LudumRPG.Source.Objects;
 using LudumRPG.Source.Objects.Overworld.UI;
-using LudumRPG.Source.Data.Story;
+using LudumRPG.Source.Data.Storage;
 using LudumRPG.Source.Data;
 using System.Diagnostics;
 

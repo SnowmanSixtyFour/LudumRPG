@@ -17,7 +17,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using LudumRPG.Source;
-using LudumRPG.Source.Data.Storage;
+using LudumRPG.Source.Data.Files;
 using LudumRPG.Source.States;
 using LudumRPG.Source.Data;
 
