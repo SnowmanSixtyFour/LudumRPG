@@ -31,7 +31,7 @@ namespace LudumRPG.Source.States
 
             dialogHUD = new DialogHUD();
 
-            dialogHUD.setDialog(DialogStorage.test);
+            dialogHUD.setDialog(DialogStorage.intro);
         }
 
         public override void OnUpdate(GameTime gameTime)

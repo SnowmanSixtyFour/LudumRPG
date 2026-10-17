@@ -21,13 +21,14 @@ namespace LudumRPG.Source.Data
 {
     internal class DialogStorage
     {
-        public static Dialog test;
+        public static Dialog
+            intro;
 
         public static void LoadDialog()
         {
-            test = new Dialog("Test");
-            test.Lines.Add(new DialogLine("Test Guy", "Hello there!"));
-            test.Lines.Add(new DialogLine("Test Guy", "This is a test\nsecond line!\nblah blah blah", Global.logo));
+            intro = new Dialog("Intro");
+            intro.Lines.Add(new DialogLine("", "Hello there!"));
+            intro.Lines.Add(new DialogLine("", "Welcome to Ludum RPG!"));
         }
     }
 }
