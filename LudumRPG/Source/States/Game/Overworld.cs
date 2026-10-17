@@ -21,8 +21,8 @@ namespace LudumRPG.Source.States
 
         public Overworld()
         {
-            player = new Player(new Point(0, 0));
-            companion = new Companion();
+            player = new Player(new Point(124, 110));
+            companion = new Companion(player);
 
             dialogHUD = new DialogHUD();
             dialogHUD.setDialog(DialogStorage.intro);
@@ -30,6 +30,16 @@ namespace LudumRPG.Source.States
 
         public override void OnUpdate(GameTime gameTime)
         {
+            // Prevent movement during Dialog
+            if (dialogHUD.isVisible())
+            {
+                player.canMove = false;
+            }
+            else
+            {
+                player.canMove = true;
+            }
+
             // Advance through Dialog
             if (PressConfirm())
             {
@@ -52,6 +62,7 @@ namespace LudumRPG.Source.States
             graphicsDevice.Clear(Color.CornflowerBlue);
 
             // Draw Objects
+            companion.Draw(spriteBatch);
             player.Draw(spriteBatch);
 
             // Draw HUD

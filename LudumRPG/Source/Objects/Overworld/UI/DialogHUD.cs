@@ -29,9 +29,6 @@ namespace LudumRPG.Source.Objects.Overworld.UI
         public Dialog dialog;
         private int steps = 0; // Current Line of Dialog
         public bool endOfDialog { get; private set; } = false;
-        public bool
-            lowering = false,
-            heightening = false;
         public int currentLine = 0;
         private Color invisible = (Color.White * 0f);
 
@@ -134,6 +131,11 @@ namespace LudumRPG.Source.Objects.Overworld.UI
         public void Hide()
         {
             this.visible = false;
+        }
+
+        public bool isVisible()
+        {
+            return visible;
         }
 
         // Reset Typewriter Variables for Reuse
