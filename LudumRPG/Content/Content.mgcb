@@ -31,6 +31,12 @@
 /processorParam:Quality=Best
 /build:Assets/Audio/SFX/Battle/jump.wav
 
+#begin Assets/Audio/SFX/Battle/no.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Assets/Audio/SFX/Battle/no.wav
+
 #begin Assets/Audio/SFX/Cutscene/computerStartup.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor

@@ -30,11 +30,8 @@ namespace LudumRPG.Source.Objects.Battle.Characters
         public bool isJumping { get { return jumping; } private set { jumping = value; } }
 
         // Character Values
-        protected int
-            HP, level,
-
-            maxLevel = 99,
-            maxHP = 20;
+        public int HP { get; set; }
+        public int maxHP { get; private set; } = 20;
         protected float jumpPitch = 0.0f;
 
         public PartyMember(Keys jumpKey, Buttons jumpButton, Texture2D texture, Point location, Point size, Point sheetSize, Color color) : base(texture, location, size, sheetSize, color)
@@ -45,7 +42,6 @@ namespace LudumRPG.Source.Objects.Battle.Characters
             this.jumpButton = jumpButton;
 
             // Set Values
-            this.level = 1; // Doesnt matter for the ludum dare build :P
             this.HP = maxHP;
         }
 
@@ -94,6 +90,13 @@ namespace LudumRPG.Source.Objects.Battle.Characters
             else
             {
             }
+        }
+
+        public void SetMaxHealth(int amount, bool restoreHP = false)
+        {
+            this.maxHP = amount;
+
+            if (restoreHP) this.HP = maxHP;
         }
     }
 }

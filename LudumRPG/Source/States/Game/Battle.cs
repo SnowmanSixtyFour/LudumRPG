@@ -18,8 +18,8 @@ namespace LudumRPG.Source.States
         private Text debugText;
         
         // Characters
-        private PlayerOne playerOne;
-        private PlayerTwo playerTwo;
+        public PlayerOne playerOne;
+        public PlayerTwo playerTwo;
 
         private Computer computer;
 
@@ -116,12 +116,25 @@ namespace LudumRPG.Source.States
                         // Hurt Boss
                         Global.PlayHurtSound();
                         computer.HP -= playerOneDamage;
+
+                        // Continue
+                        currentTurn++;
                     }
                     else
                     {
-                    }
+                        // Prevent player from overhealing and wasting a whole turn
+                        if (playerOne.HP >= playerOne.maxHP)
+                        {
+                            SFX.no.Play();
+                        }
+                        else
+                        {
+                            // Heal player
+                            playerOne.HP += random.Next(2, 6);
 
-                    currentTurn++;
+                            currentTurn++;
+                        }
+                    }
                 }
 
                 // Player Two Options
@@ -133,12 +146,22 @@ namespace LudumRPG.Source.States
 
                         Global.PlayHurtSound();
                         computer.HP -= playerTwoDamage;
+
+                        currentTurn++;
                     }
                     else
                     {
-                    }
+                        if (playerTwo.HP >= playerTwo.maxHP)
+                        {
+                            SFX.no.Play();
+                        }
+                        else
+                        {
+                            playerTwo.HP += random.Next(1, 7);
 
-                    currentTurn++;
+                            currentTurn++;
+                        }
+                    }
                 }
             }
 

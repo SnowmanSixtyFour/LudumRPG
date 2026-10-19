@@ -14,7 +14,9 @@ namespace LudumRPG.Source.Objects.Battle.UI
     {
         // Visuals
         private StaticSprite BG;
-        private Text question;
+        private Text question, playerHP;
+
+        private int xPadding = 8;
 
         // Bare bones button code
         private Text
@@ -36,9 +38,11 @@ namespace LudumRPG.Source.Objects.Battle.UI
         public BattleHUD()
         {
             BG = new StaticSprite(Assets.mainBattleHUD, new Rectangle(12, 160, Global.resWidth - 24, 50), Color.White);
-            question = new Text("", new Vector2(BG.X + 8, BG.Y + 4), Color.White);
+            question = new Text("", new Vector2(BG.X + xPadding, BG.Y + 4), Color.White);
 
-            attackButton = new Text("Attack", new Vector2(BG.X + 40, BG.Y + 20), Color.White);
+            playerHP = new Text("", new Vector2(BG.X + xPadding, BG.Y + 32), new Color(142, 142, 142));
+
+            attackButton = new Text("Attack", new Vector2(BG.X + 40, BG.Y + 18), Color.White);
             healButton = new Text("Heal", new Vector2(attackButton.X + 120, attackButton.Y), Color.White);
 
             fancyColor = new Color(255, 255, 0);
@@ -54,14 +58,20 @@ namespace LudumRPG.Source.Objects.Battle.UI
             // Update HUD
             if (onMainHUD)
             {
-                // Question Flavour Text
+                // Check Turn
                 if (battle.currentTurn == battle.playerOneTurn)
                 {
+                    // Flavour Text
                     question.setText($"What will {DialogStorage.name1} do?");
+
+                    // Update HP
+                    playerHP.setText($"HP: {battle.playerOne.HP}/{battle.playerOne.maxHP}");
                 }
                 if (battle.currentTurn == battle.playerTwoTurn)
                 {
                     question.setText($"What will {DialogStorage.name2} do?");
+
+                    playerHP.setText($"HP: {battle.playerTwo.HP}/{battle.playerTwo.maxHP}");
                 }
 
                 // Selected Button
@@ -114,6 +124,7 @@ namespace LudumRPG.Source.Objects.Battle.UI
                 {
                     BG.Draw(spriteBatch);
                     question.Draw(spriteBatch);
+                    playerHP.Draw(spriteBatch);
 
                     attackButton.Draw(spriteBatch);
                     healButton.Draw(spriteBatch);

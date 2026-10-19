@@ -12,6 +12,8 @@ namespace LudumRPG.Source.Objects.Battle.Characters.PartyMembers
     {
         public PlayerTwo(Point startingLocation) : base(Keys.X, Buttons.B, Global.noImg, startingLocation, new Point(16, 16), new Point(16, 16), Color.White)
         {
+            // Set Values
+            SetMaxHealth(21, true);
         }
     }
 }
