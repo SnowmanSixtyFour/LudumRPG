@@ -85,7 +85,10 @@ namespace LudumRPG.Source
             logo,
 
             // Overlay,
-            crtVignette;
+            crtVignette,
+
+            // NPCs
+            computer;
 
         public static SpriteFont
             retro;
@@ -132,6 +135,8 @@ namespace LudumRPG.Source
             Global.logo = content.Load<Texture2D>("Assets/Images/Title/logo");
 
             Global.crtVignette = content.Load<Texture2D>("Assets/Images/Overlay/crtVignette");
+
+            Global.computer = content.Load<Texture2D>("Assets/Images/Overworld/ComputerPlaceholder"); // Change to remove Placeholder
 
             // Fonts
 

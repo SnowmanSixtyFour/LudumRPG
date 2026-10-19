@@ -30,6 +30,8 @@ namespace LudumRPG.Source.States
             }
             if (text.endOfDialog)
             {
+                SFX.confirm.Play();
+
                 SwitchState(main.battle);
             }
 

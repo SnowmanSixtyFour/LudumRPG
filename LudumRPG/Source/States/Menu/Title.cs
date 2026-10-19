@@ -46,6 +46,7 @@ namespace LudumRPG.Source.States.Menu
             if (PressConfirm())
             {
                 SFX.confirm.Play();
+
                 SwitchState(main.overworld);
             }
 

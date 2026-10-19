@@ -230,5 +230,67 @@ namespace LudumRPG.Source.Objects
             }
             else return false;
         }
+
+        // Controls I poorly copied and pasted from State.cs because im LAZYYY -Snowman64
+
+        public bool PressA()
+        {
+            if (KeyPress(Keys.Z) || ButtonPress(Buttons.A)) return true;
+            else return false;
+        }
+
+        public bool PressB()
+        {
+            if (KeyPress(Keys.X) || ButtonPress(Buttons.B)) return true;
+            else return false;
+        }
+
+        public bool PressUp()
+        {
+            if (KeyPress(Keys.Up) || ButtonPress(Buttons.LeftThumbstickUp) || ButtonPress(Buttons.DPadUp)) return true;
+            else return false;
+        }
+
+        public bool PressDown()
+        {
+            if (KeyPress(Keys.Down) || ButtonPress(Buttons.LeftThumbstickDown) || ButtonPress(Buttons.DPadDown)) return true;
+            else return false;
+        }
+
+        public bool PressLeft()
+        {
+            if (KeyPress(Keys.Left) || ButtonPress(Buttons.LeftThumbstickLeft) || ButtonPress(Buttons.DPadLeft)) return true;
+            else return false;
+        }
+
+        public bool PressRight()
+        {
+            if (KeyPress(Keys.Right) || ButtonPress(Buttons.LeftThumbstickRight) || ButtonPress(Buttons.DPadRight)) return true;
+            else return false;
+        }
+
+        public bool HoldUp()
+        {
+            if (KeyDown(Keys.Up) || ButtonDown(Buttons.LeftThumbstickUp) || ButtonDown(Buttons.DPadUp)) return true;
+            else return false;
+        }
+
+        public bool HoldDown()
+        {
+            if (KeyDown(Keys.Down) || ButtonDown(Buttons.LeftThumbstickDown) || ButtonDown(Buttons.DPadDown)) return true;
+            else return false;
+        }
+
+        public bool HoldLeft()
+        {
+            if (KeyDown(Keys.Left) || ButtonDown(Buttons.LeftThumbstickLeft) || ButtonDown(Buttons.DPadLeft)) return true;
+            else return false;
+        }
+
+        public bool HoldRight()
+        {
+            if (KeyDown(Keys.Right) || ButtonDown(Buttons.LeftThumbstickRight) || ButtonDown(Buttons.DPadRight)) return true;
+            else return false;
+        }
     }
 }

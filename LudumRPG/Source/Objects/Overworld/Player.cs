@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using LudumRPG.Source.Objects.Overworld.Characters;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -19,7 +20,7 @@ namespace LudumRPG.Source.Objects.Overworld
 
         public bool canMove = true;
 
-        public Player(Point location) : base(null, location, new Point(16, 16), new Point(16, 16), Color.White)
+        public Player(int X, int Y) : base(null, new Point(X, Y), new Point(16, 16), new Point(16, 16), Color.White)
         {
             // Create Animations
             CreateAnimation("idle", 0, 0);
@@ -31,24 +32,25 @@ namespace LudumRPG.Source.Objects.Overworld
             if (canMove)
             {
                 // Movement
-                if (KeyDown(Keys.Left))
+
+                if (HoldLeft())
                 {
                     X -= walkSpeed;
                 }
-                if (KeyDown(Keys.Right))
+                if (HoldRight())
                 {
                     X += walkSpeed;
                 }
-                if (KeyDown(Keys.Up))
+                if (HoldUp())
                 {
                     Y -= walkSpeed;
                 }
-                if (KeyDown(Keys.Down))
+                if (HoldDown())
                 {
                     Y += walkSpeed;
                 }
 
-                if (KeyDown(Keys.Left) || KeyDown(Keys.Right))
+                if (HoldLeft() || HoldRight())
                 {
                     movingHorizontal = true;
                 }
@@ -56,7 +58,7 @@ namespace LudumRPG.Source.Objects.Overworld
                 {
                     movingHorizontal = false;
                 }
-                if (KeyDown(Keys.Up) || KeyDown(Keys.Down))
+                if (HoldUp() || HoldDown())
                 {
                     movingVertical = true;
                 }
@@ -66,14 +68,17 @@ namespace LudumRPG.Source.Objects.Overworld
                 }
 
                 // Animations
-                if (!KeyDown(Keys.Left) // Idle
-                    && !KeyDown(Keys.Right)
-                    && !KeyDown(Keys.Up)
-                    && !KeyDown(Keys.Down))
+
+                // Idle
+                if (!HoldLeft()
+                    && !HoldRight()
+                    && !HoldUp()
+                    && !HoldDown())
                 {
                     PlayAnimation("idle");
                 }
-                else // Walking
+                // Walking
+                else
                 {
                     PlayAnimation("walk");
                 }
