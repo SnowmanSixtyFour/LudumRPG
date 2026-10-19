@@ -13,7 +13,7 @@ namespace LudumRPG.Source.Objects.Overworld
     internal class Companion : Character
     {
         protected int walkSpeed = 1;
-        protected int followDistance = 22;
+        public readonly int followDistance = 22;
 
         public bool moving { get; private set; } = false;
         public bool behindPlayer { get; private set; } = true;

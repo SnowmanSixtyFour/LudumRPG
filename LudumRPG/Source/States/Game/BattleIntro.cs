@@ -16,8 +16,8 @@ namespace LudumRPG.Source.States
 
         public BattleIntro()
         {
+            // Set Battle Intro Text
             text = new BattleIntroText();
-
             text.setDialog(DialogStorage.battleIntro);
         }
 
@@ -41,6 +41,8 @@ namespace LudumRPG.Source.States
 
         public override void OnReset()
         {
+            // Reset Text
+            text.setDialog(DialogStorage.battleIntro);
             text.Reset();
         }
 

@@ -1,17 +1,25 @@
-﻿// LudumRPG
-// Created by Snowman64
-
-// DEVELOPED WITH THE Z ENGINE
-// https://github.com/SnowmanSixtyFour/ZEngine
-
-// Made for Ludum Dare 60
-// https://ldjam.com/events/ludum-dare/60
-
-// Special Thanks
-// CRT Scanline Shaders - Timothy Lottes
-// jsfxr SFX Generator - Eric Fredricksen
-
-// All assets and programs in this list are free to use under the public domain.
+﻿/* ----------------------------------------------
+ * LudumRPG
+ * Created by Snowman64
+ *
+ * DEVELOPED WITH THE Z ENGINE
+ * https://github.com/SnowmanSixtyFour/ZEngine
+ *
+ * Made for Ludum Dare 60
+ * https://ldjam.com/events/ludum-dare/60
+ * ----------------------------------------------
+ * All assets and programs in this list are free to use under the public domain.
+ *
+ * CRT Scanline Shaders - Timothy Lottes
+ * https://github.com/libretro/glsl-shaders/blob/master/crt/shaders/crt-lottes.glsl
+ *
+ * jsfxr SFX Generator - Eric Fredricksen
+ * https://sfxr.me/
+ *
+ * Computer Startup Sound - kyles
+ * https://freesound.org/people/kyles/sounds/453818/
+ * ----------------------------------------------
+ */
 
 using System;
 using System.Diagnostics;

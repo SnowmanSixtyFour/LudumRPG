@@ -70,6 +70,9 @@ namespace LudumRPG.Source.States
             if (dialogHUD.dialog == DialogStorage.introEnd && dialogHUD.endOfDialog)
             {
                 SwitchState(main.battleIntro);
+
+                // Play Computer Startup Sound
+                SFX.computerStartup.Play();
             }
 
             // --- Update Objects ---
@@ -82,7 +85,17 @@ namespace LudumRPG.Source.States
 
         public override void OnReset()
         {
-            dialogHUD.Hide();
+            // Reset Dialog
+            dialogHUD.setDialog(DialogStorage.intro);
+            dialogHUD.currentLine = 0;
+            dialogHUD.Show();
+
+            // Reset Characters
+            player.X = 124;
+            player.Y = 110;
+
+            companion.X = player.X;
+            companion.Y = player.Y - companion.followDistance;
         }
 
         public override void OnDraw(SpriteBatch spriteBatch)

@@ -72,6 +72,8 @@ namespace LudumRPG.Source.States.Menu
 
         public override void OnReset()
         {
+            // Reset Text
+            credits.X = Global.resWidth;
         }
 
         public override void OnDraw(SpriteBatch spriteBatch)

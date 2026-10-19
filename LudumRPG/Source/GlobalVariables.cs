@@ -156,6 +156,8 @@ namespace LudumRPG.Source
 
             SFX.dialog = content.Load<SoundEffect>("Assets/Audio/SFX/Dialog/dialog");
             SFX.dialogContinue = content.Load<SoundEffect>("Assets/Audio/SFX/Dialog/dialogContinue");
+
+            SFX.computerStartup = content.Load<SoundEffect>("Assets/Audio/SFX/Cutscene/computerStartup");
         }
     }
 
@@ -172,7 +174,10 @@ namespace LudumRPG.Source
             confirm,
 
             // Dialog
-            dialog, dialogContinue;
+            dialog, dialogContinue,
+
+            // Cutscenes
+            computerStartup;
     }
 
     internal class Assets

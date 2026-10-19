@@ -102,6 +102,9 @@ namespace LudumRPG.Source.States
 
             // Switch to New State
             main.currentState = newState;
+
+            // Reset Next State
+            newState.OnReset();
         }
 
         /// <summary>

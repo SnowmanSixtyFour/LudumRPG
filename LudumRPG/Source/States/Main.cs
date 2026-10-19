@@ -74,6 +74,13 @@ namespace LudumRPG.Source.States
             {
                 currentState.Update(gameTime, this);
             }
+
+            // --- Reset ---
+
+            if (KeyPress(Keys.R))
+            {
+                SwitchState(title);
+            }
         }
 
         public override void OnDraw(SpriteBatch spriteBatch)
