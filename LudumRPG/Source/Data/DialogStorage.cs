@@ -59,32 +59,38 @@ namespace LudumRPG.Source.Data
                 =======================================
 
                 We old technology are tired of
+
                 waiting to be used. Collecting
+
                 dust, sitting in closets...
+
+
 
                 We want our revenge!
 
                 =======================================
 
                 Use of this machine will result
+
                 in a battle. When you are
+
                 ready, press {Global.enterKey} to proceed.
                 """;
 
             // --- Set Dialog ---
 
             intro = new Dialog("Intro");
-            intro.Lines.Add(new DialogLine(unknownName, $"Hey, {name1}?", Global.shortPortraitNormal));
-            intro.Lines.Add(new DialogLine(name1, $"What's up, {name2}?", Global.tallPortraitNormal));
-            intro.Lines.Add(new DialogLine(name2, "I've been hearing a\nweird noise at the\nback of the store\nall day...", Global.shortPortraitConfused));
-            intro.Lines.Add(new DialogLine(name2, "What do you think\nit could be...?", Global.shortPortraitConfused));
-            intro.Lines.Add(new DialogLine(name1, "Huh? Weird noise?", Global.tallPortraitConfused));
-            intro.Lines.Add(new DialogLine(name1, "Let's check it out!", Global.tallPortraitExcited));
+            intro.Lines.Add(new DialogLine(unknownName, $"Hey, {name1}?", Assets.shortPortraitNormal));
+            intro.Lines.Add(new DialogLine(name1, $"What's up, {name2}?", Assets.tallPortraitNormal));
+            intro.Lines.Add(new DialogLine(name2, "I've been hearing a\nweird noise at the\nback of the store\nall day...", Assets.shortPortraitConfused));
+            intro.Lines.Add(new DialogLine(name2, "What do you think\nit could be...?", Assets.shortPortraitConfused));
+            intro.Lines.Add(new DialogLine(name1, "Huh? Weird noise?", Assets.tallPortraitConfused));
+            intro.Lines.Add(new DialogLine(name1, "Let's check it out!", Assets.tallPortraitExcited));
 
             introEnd = new Dialog("Found Computer");
-            introEnd.Lines.Add(new DialogLine(name1, $"{name2}, was this what\nwas scaring you?", Global.tallPortraitConfused));
-            introEnd.Lines.Add(new DialogLine(name2, "I guess so.\nI forgot we even had\nthis machine.", Global.shortPortraitNormal));
-            introEnd.Lines.Add(new DialogLine(name1, "Hang on...\nIt's already been\nturned on?", Global.tallPortraitNormal));
+            introEnd.Lines.Add(new DialogLine(name1, $"{name2}, was this what\nwas scaring you?", Assets.tallPortraitConfused));
+            introEnd.Lines.Add(new DialogLine(name2, "I guess so.\nI forgot we even had\nthis machine.", Assets.shortPortraitNormal));
+            introEnd.Lines.Add(new DialogLine(name1, "Hang on...\nIt's already been\nturned on?", Assets.tallPortraitNormal));
 
             battleIntro = new Dialog("Battle Intro");
             battleIntro.Lines.Add(new DialogLine(computerName, bookOsBootup));

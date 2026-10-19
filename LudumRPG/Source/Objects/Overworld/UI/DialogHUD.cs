@@ -107,6 +107,8 @@ namespace LudumRPG.Source.Objects.Overworld.UI
             else
             {
                 endOfDialog = true;
+
+                this.line.setText(""); // Empty Text
                 this.Hide();
             }
         }

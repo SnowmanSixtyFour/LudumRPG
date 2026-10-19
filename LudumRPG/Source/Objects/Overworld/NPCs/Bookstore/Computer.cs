@@ -10,7 +10,7 @@ namespace LudumRPG.Source.Objects.Overworld.NPCs.Bookstore
 {
     internal class Computer : NPC
     {
-        public Computer(int X, int Y) : base(Global.computer, new Point(X, Y), new Point(64, 16), new Point(16, 16), Color.White) 
+        public Computer(int X, int Y) : base(Assets.computer, new Point(X, Y), new Point(64, 16), new Point(16, 16), Color.White) 
         {
             CreateAnimation("idle", 0, 3);
         }

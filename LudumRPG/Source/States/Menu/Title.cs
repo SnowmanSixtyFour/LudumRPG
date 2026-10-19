@@ -15,9 +15,13 @@ namespace LudumRPG.Source.States.Menu
 
         private Logo logo;
 
-        private Text pressStart;
+        private Text
+            pressStart,
+            credits;
 
-        private String pressStartText = $"Press {Global.enterKey} to Start!";
+        private String
+            pressStartText = $"Press {Global.enterKey} to Start!",
+            creditsText = "Code by Snowman64, Artwork by ShawSure, Entry for Ludum Dare 60";
 
         float startTimer = 0f;
         private bool startVisible = true;
@@ -29,13 +33,11 @@ namespace LudumRPG.Source.States.Menu
             logo = new Logo(new Point(20, 50));
 
             pressStart = new Text(Global.retro, pressStartText, new Vector2(58, 160), Color.White);
+            credits = new Text(Global.retro, creditsText, new Vector2(Global.resWidth, 208), Color.White);
         }
 
         public override void OnUpdate(GameTime gameTime)
         {
-            // Update Sprites
-            logo.Update(gameTime);
-
             // Update BG
             float bgOffset = bgScrollSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
 
@@ -59,6 +61,13 @@ namespace LudumRPG.Source.States.Menu
                 
                 startTimer = 0f;
             }
+
+            // Move Credits
+            credits.X--;
+            if (credits.X < -500) credits.X = Global.resWidth; // Reset position
+
+            // Update Sprites
+            logo.Update(gameTime);
         }
 
         public override void OnReset()
@@ -72,6 +81,7 @@ namespace LudumRPG.Source.States.Menu
             logo.Draw(spriteBatch);
 
             if (startVisible) pressStart.Draw(spriteBatch);
+            credits.Draw(spriteBatch);
         }
     }
 }

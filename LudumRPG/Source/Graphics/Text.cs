@@ -19,6 +19,9 @@ namespace LudumRPG.Source.Graphics
         protected float size = 1.0f;
         protected bool centered;
 
+        public int X { get { return (int)position.X; } set { position.X = value; } }
+        public int Y { get { return (int)position.Y; } set { position.Y = value; } }
+
         public Text(SpriteFont font, String text, Vector2 position, Color color, float size = 1.0f, bool centered = false)
         {
             // Initialize Text

@@ -85,18 +85,7 @@ namespace LudumRPG.Source
             logo,
 
             // Overlay,
-            crtVignette,
-
-            // Portraits
-            tallPortraitNormal,
-            tallPortraitConfused,
-            tallPortraitExcited,
-
-            shortPortraitNormal,
-            shortPortraitConfused,
-
-            // NPCs
-            computer;
+            crtVignette;
 
         public static SpriteFont
             retro;
@@ -144,14 +133,14 @@ namespace LudumRPG.Source
 
             Global.crtVignette = content.Load<Texture2D>("Assets/Images/Overlay/crtVignette");
 
-            Global.computer = content.Load<Texture2D>("Assets/Images/Overworld/ComputerPlaceholder"); // Change to remove Placeholder
+            Assets.computer = content.Load<Texture2D>("Assets/Images/Overworld/ComputerPlaceholder"); // Change to remove Placeholder
 
-            Global.tallPortraitNormal = content.Load<Texture2D>("Assets/Images/GUI/Portrait/tallPortraitNormal");
-            Global.tallPortraitConfused = content.Load<Texture2D>("Assets/Images/GUI/Portrait/tallPortraitConfused");
-            Global.tallPortraitExcited = content.Load<Texture2D>("Assets/Images/GUI/Portrait/tallPortraitExcited");
+            Assets.tallPortraitNormal = content.Load<Texture2D>("Assets/Images/GUI/Portrait/tallPortraitNormal");
+            Assets.tallPortraitConfused = content.Load<Texture2D>("Assets/Images/GUI/Portrait/tallPortraitConfused");
+            Assets.tallPortraitExcited = content.Load<Texture2D>("Assets/Images/GUI/Portrait/tallPortraitExcited");
 
-            Global.shortPortraitNormal = content.Load<Texture2D>("Assets/Images/GUI/Portrait/shortPortraitNormal");
-            Global.shortPortraitConfused = content.Load<Texture2D>("Assets/Images/GUI/Portrait/shortPortraitConfused");
+            Assets.shortPortraitNormal = content.Load<Texture2D>("Assets/Images/GUI/Portrait/shortPortraitNormal");
+            Assets.shortPortraitConfused = content.Load<Texture2D>("Assets/Images/GUI/Portrait/shortPortraitConfused");
 
             // Fonts
 
@@ -184,5 +173,20 @@ namespace LudumRPG.Source
 
             // Dialog
             dialog, dialogContinue;
+    }
+
+    internal class Assets
+    {
+        public static Texture2D
+            // Portraits
+            tallPortraitNormal,
+            tallPortraitConfused,
+            tallPortraitExcited,
+
+            shortPortraitNormal,
+            shortPortraitConfused,
+
+            // NPCs
+            computer;
     }
 }
