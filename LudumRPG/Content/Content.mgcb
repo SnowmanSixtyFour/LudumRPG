@@ -37,6 +37,14 @@
 /processorParam:Quality=Best
 /build:Assets/Audio/SFX/GUI/confirm.wav
 
+#begin Assets/Fonts/Arial.png
+/importer:TextureImporter
+/processor:FontTextureProcessor
+/processorParam:FirstCharacter= 
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Color
+/build:Assets/Fonts/Arial.png
+
 #begin Assets/Fonts/retro.png
 /importer:TextureImporter
 /processor:FontTextureProcessor

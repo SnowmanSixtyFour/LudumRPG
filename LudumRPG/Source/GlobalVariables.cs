@@ -14,9 +14,13 @@ namespace LudumRPG.Source
 {
     internal class Global
     {
+        // Debug Mode
+
+        public static readonly bool debug = true;
+
         // Window
 
-        public static string windowName = "Ludum RPG";
+        public static readonly String windowName = "Ludum RPG";
 
         public static readonly int
             // Draw Resolution
@@ -88,7 +92,8 @@ namespace LudumRPG.Source
             crtVignette;
 
         public static SpriteFont
-            retro;
+            retro,
+            arial;
 
         public static Effect
             crt;
@@ -147,6 +152,7 @@ namespace LudumRPG.Source
             // Fonts
 
             Global.retro = content.Load<SpriteFont>("Assets/Fonts/retro");
+            Global.arial = content.Load<SpriteFont>("Assets/Fonts/arial");
 
             // Shaders
 

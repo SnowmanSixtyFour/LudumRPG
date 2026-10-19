@@ -26,6 +26,9 @@ namespace LudumRPG.Source.Objects.Battle.Characters
         private bool
             jumping = false, aboveGround = false;
 
+        public bool defense = false;
+        public bool isJumping { get { return jumping; } private set { jumping = value; } }
+
         public PartyMember(Keys jumpKey, Buttons jumpButton, Texture2D texture, Point location, Point size, Point sheetSize, Color color) : base(texture, location, size, sheetSize, color)
         {
             // Set Properties
@@ -36,21 +39,6 @@ namespace LudumRPG.Source.Objects.Battle.Characters
 
         public override void OnUpdate(GameTime gameTime)
         {
-            // --- Jumping ---
-
-            // Initiate Jump
-            if (!jumping)
-            {
-                if (KeyDown(jumpKey) || ButtonDown(jumpButton))
-                {
-                    yVelocity = -jumpIncrement;
-
-                    jumping = true;
-
-                    // TODO: Play Jump SFX
-                }
-            }
-
             // While Jumping
             if (jumping)
             {
@@ -69,6 +57,30 @@ namespace LudumRPG.Source.Objects.Battle.Characters
                 jumping = false;
 
                 Y = startLocation.Y;
+            }
+
+            // Defense Mode
+            if (defense)
+            {
+                // --- Jumping ---
+
+                // Initiate Jump
+                if (!jumping)
+                {
+                    if (KeyDown(jumpKey) || ButtonDown(jumpButton))
+                    {
+                        yVelocity = -jumpIncrement;
+
+                        jumping = true;
+
+                        // TODO: Play Jump SFX
+                    }
+                }
+            }
+
+            // Offense Mode
+            else
+            {
             }
         }
     }
