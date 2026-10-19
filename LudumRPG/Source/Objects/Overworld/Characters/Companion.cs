@@ -16,6 +16,7 @@ namespace LudumRPG.Source.Objects.Overworld
         protected int followDistance = 22;
 
         public bool moving { get; private set; } = false;
+        public bool behindPlayer { get; private set; } = true;
 
         public Companion(Player player) : base(null, new Point(player.X, player.Y - 22), new Point(16, 16), new Point(16, 16), Color.White)
         {
@@ -77,6 +78,10 @@ namespace LudumRPG.Source.Objects.Overworld
                     Y += walkSpeed;
                 }
             }
+
+            // Check if behind player
+            if (Y <= player.Y) this.behindPlayer = true;
+            else this.behindPlayer = false;
         }
     }
 }

@@ -143,10 +143,8 @@ namespace LudumRPG.Source.Objects.Overworld.UI
         {
             this.currentChar = 0; // Reset Character
 
-            // Bool to Loop Typewriter Effect
-            typewriterFinished = false;
-
             // Reset Text
+            typewriterFinished = false;
             typewriterText = "";
 
             // Reset Timer
@@ -160,8 +158,7 @@ namespace LudumRPG.Source.Objects.Overworld.UI
 
             this.steps = 0; // Reset Steps
             this.currentLine = 0; // Reset Current Line
-
-            this.endOfDialog = false; // Set Bool to False
+            this.endOfDialog = false;
 
             this.dialog = newDialog; // Set New Dialog
 

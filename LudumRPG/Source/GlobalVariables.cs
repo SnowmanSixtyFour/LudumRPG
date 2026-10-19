@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 
 namespace LudumRPG.Source
 {
@@ -57,6 +58,18 @@ namespace LudumRPG.Source
 
         public static float dialogSpeed = 0.02f;
 
+        // Keys
+        public static readonly String
+            keyboardEnterKey = "[Z]",
+            keyboardBackKey = "[X]",
+
+            controllerEnterKey = "[A]",
+            controllerBackKey = "[B]";
+
+        public static String
+            enterKey = keyboardEnterKey,
+            backKey = controllerBackKey;
+
         // Graphics
 
         public static bool crtFilter = false;
@@ -97,6 +110,20 @@ namespace LudumRPG.Source
         // Load game assets
         public static void LoadContent(ContentManager content)
         {
+            // Text
+
+            // Update Keys
+            if (GamePad.GetState(PlayerIndex.One).IsConnected)
+            {
+                enterKey = controllerEnterKey;
+                backKey = controllerBackKey;
+            }
+            else
+            {
+                enterKey = keyboardEnterKey;
+                backKey = keyboardBackKey;
+            }
+
             // Images
 
             Global.noImg = content.Load<Texture2D>("Assets/Images/pixel");
@@ -116,6 +143,8 @@ namespace LudumRPG.Source
 
             // Sounds
 
+            SFX.confirm = content.Load<SoundEffect>("Assets/Audio/SFX/GUI/confirm");
+
             SFX.dialog = content.Load<SoundEffect>("Assets/Audio/SFX/Dialog/dialog");
             SFX.dialogContinue = content.Load<SoundEffect>("Assets/Audio/SFX/Dialog/dialogContinue");
         }
@@ -130,6 +159,9 @@ namespace LudumRPG.Source
     internal class SFX
     {
         public static SoundEffect
+            // GUI
+            confirm,
+
             // Dialog
             dialog, dialogContinue;
     }

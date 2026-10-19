@@ -62,8 +62,9 @@ namespace LudumRPG.Source.States
             graphicsDevice.Clear(Color.CornflowerBlue);
 
             // Draw Objects
-            companion.Draw(spriteBatch);
+            if (companion.behindPlayer) companion.Draw(spriteBatch);
             player.Draw(spriteBatch);
+            if (!companion.behindPlayer) companion.Draw(spriteBatch);
 
             // Draw HUD
             dialogHUD.Draw(spriteBatch);

@@ -172,9 +172,10 @@ namespace LudumRPG
             graphics.ApplyChanges();
         }
 
-        // Update Global Variables
+        // Update Global Properties
         private void UpdateGlobal()
         {
+            // Global Variables
             Global.active = this.IsActive;
         }
 

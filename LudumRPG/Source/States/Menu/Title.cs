@@ -17,9 +17,7 @@ namespace LudumRPG.Source.States.Menu
 
         private Text pressStart;
 
-        private String
-            pressStartText = "Press [Z] to Start!",
-            pressStartTextAlt = "Press [A] to Start!";
+        private String pressStartText = $"Press {Global.enterKey} to Start!";
 
         float startTimer = 0f;
         private bool startVisible = true;
@@ -38,15 +36,6 @@ namespace LudumRPG.Source.States.Menu
             // Update Sprites
             logo.Update(gameTime);
 
-            if (ControllerConnected())
-            {
-                pressStart.setText(pressStartTextAlt);
-            }
-            else
-            {
-                pressStart.setText(pressStartText);
-            }
-
             // Update BG
             float bgOffset = bgScrollSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
 
@@ -56,6 +45,7 @@ namespace LudumRPG.Source.States.Menu
             // Go to Overworld
             if (PressConfirm())
             {
+                SFX.confirm.Play();
                 SwitchState(main.overworld);
             }
 

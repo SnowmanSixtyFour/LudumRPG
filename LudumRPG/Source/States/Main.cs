@@ -17,6 +17,7 @@ namespace LudumRPG.Source.States
         // States
         public Title title;
         public Overworld overworld;
+        public BattleIntro battleIntro;
         public Battle battle;
 
         // Overlay
@@ -27,6 +28,8 @@ namespace LudumRPG.Source.States
             // Set States
             title = new Title();
             overworld = new Overworld();
+            battleIntro = new BattleIntro();
+            battle = new Battle();
 
             // Set Current State
             currentState = title;
