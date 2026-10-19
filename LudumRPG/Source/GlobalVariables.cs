@@ -16,7 +16,7 @@ namespace LudumRPG.Source
     {
         // Debug Mode
 
-        public static readonly bool debug = true;
+        public static bool debug = true;
 
         // Window
 

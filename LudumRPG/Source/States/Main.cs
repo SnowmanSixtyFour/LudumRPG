@@ -32,7 +32,7 @@ namespace LudumRPG.Source.States
             battle = new Battle();
 
             // Set Current State
-            currentState = title;
+            currentState = battle;
 
             // Set Overlay
             pauseOverlay = new StaticSprite(null, new Rectangle(0, 0, Global.resWidth, Global.resHeight), Color.Black * 0.5f);
@@ -40,6 +40,11 @@ namespace LudumRPG.Source.States
 
         public override void OnUpdate(GameTime gameTime)
         {
+            // --- Debug Tools ---
+
+            // Toggle Debug Mode
+            if (KeyPress(Keys.D0)) Global.debug = !Global.debug;
+
             // --- Pausing ---
 
             // If Pausing is Possible
