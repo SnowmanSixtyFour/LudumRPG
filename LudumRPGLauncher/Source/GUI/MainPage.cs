@@ -22,7 +22,7 @@ namespace LudumRPGLauncher.Source.GUI
 
         private int
             buttonWidth = 120, buttonHeight = 25,
-            buttonX = 10;
+            buttonX = 110;
 
         // GUI
         private Button
@@ -62,7 +62,7 @@ namespace LudumRPGLauncher.Source.GUI
             startButton = new Button
             {
                 Left = buttonX,
-                Top = 10,
+                Top = 30,
                 Width = buttonWidth,
                 Height = buttonHeight,
                 Text = "Start Game"
@@ -72,7 +72,7 @@ namespace LudumRPGLauncher.Source.GUI
             fullscreenButton = new Button
             {
                 Left = buttonX,
-                Top = 100,
+                Top = 130,
                 Width = buttonWidth,
                 Height = buttonHeight,
                 Text = "Fullscreen"
@@ -82,7 +82,7 @@ namespace LudumRPGLauncher.Source.GUI
             crtFilterButton = new Button
             {
                 Left = buttonX,
-                Top = 130,
+                Top = 160,
                 Width = buttonWidth,
                 Height = buttonHeight,
                 Text = "CRT Filter"
@@ -92,7 +92,7 @@ namespace LudumRPGLauncher.Source.GUI
             aspectRatioLabel = new Label
             {
                 Left = buttonX,
-                Top = 172,
+                Top = 202,
                 Height = 15,
                 Text = "Aspect Ratio"
             };
@@ -100,7 +100,7 @@ namespace LudumRPGLauncher.Source.GUI
             aspectRatioList = new ComboBox
             {
                 Left = buttonX,
-                Top = 190,
+                Top = 220,
                 Width = buttonWidth,
                 Height = buttonHeight
             };

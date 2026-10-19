@@ -88,8 +88,8 @@ namespace LudumRPG.Source.Data
             intro.Lines.Add(new DialogLine(name1, "Let's check it out!", Assets.tallPortraitExcited));
 
             introEnd = new Dialog("Found Computer");
-            introEnd.Lines.Add(new DialogLine(name1, $"{name2}, was this what\nwas scaring you?", Assets.tallPortraitConfused));
-            introEnd.Lines.Add(new DialogLine(name2, "I guess so.\nI forgot we even had\nthis machine.", Assets.shortPortraitNormal));
+            introEnd.Lines.Add(new DialogLine(name1, $"{name2}, was this\nthe thing that was\nscaring you...?", Assets.tallPortraitConfused));
+            introEnd.Lines.Add(new DialogLine(name2, "I guess so.\nI forgot we even had\nthis bucket of bolts.", Assets.shortPortraitNormal));
             introEnd.Lines.Add(new DialogLine(name1, "Hang on...\nIt's already been\nturned on?", Assets.tallPortraitNormal));
 
             battleIntro = new Dialog("Battle Intro");

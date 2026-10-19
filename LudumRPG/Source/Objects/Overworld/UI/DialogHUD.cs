@@ -17,13 +17,16 @@ namespace LudumRPG.Source.Objects.Overworld.UI
         // Visuals
         protected StaticSprite
             dialogBox,
-            portrait;
+            portraitBG, portrait;
         protected Text
             name,
             line;
 
         // Properties
         protected bool visible = false;
+
+        // BG
+        private float bgScrollSpeed = 20.0f;
 
         // Dialog
         public Dialog dialog;
@@ -41,7 +44,10 @@ namespace LudumRPG.Source.Objects.Overworld.UI
         public DialogHUD()
         {
             dialogBox = new StaticSprite(null, new Rectangle(0, 148, Global.resWidth, Global.resHeight), Color.Black * 0.5f);
-            portrait = new StaticSprite(null, new Rectangle(Global.resWidth - 72, 154, 64, 64), invisible);
+
+            Rectangle portraitRect = new Rectangle(Global.resWidth - 72, 154, 64, 64);
+            portraitBG = new StaticSprite(Assets.portraitBG, portraitRect, Color.White, true);
+            portrait = new StaticSprite(null, portraitRect, invisible);
 
             name = new Text("", new Vector2(15, 154), Color.White);
             line = new Text("", new Vector2(22, 170), Color.White);
@@ -50,6 +56,12 @@ namespace LudumRPG.Source.Objects.Overworld.UI
         public void Update(GameTime gameTime)
         {
             timeElapsed += (float)gameTime.ElapsedGameTime.TotalSeconds;
+
+            // --- Portrait BG ---
+
+            float bgOffset = bgScrollSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+
+            portraitBG.xOffset += bgOffset;
 
             // --- Dialog Text ---
 
@@ -118,6 +130,8 @@ namespace LudumRPG.Source.Objects.Overworld.UI
             if (visible)
             {
                 dialogBox.Draw(spriteBatch);
+
+                portraitBG.Draw(spriteBatch);
                 portrait.Draw(spriteBatch);
 
                 name.Draw(spriteBatch);

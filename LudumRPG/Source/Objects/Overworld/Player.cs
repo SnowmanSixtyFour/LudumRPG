@@ -4,7 +4,6 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using LudumRPG.Source.Objects.Overworld.Characters;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -22,9 +21,7 @@ namespace LudumRPG.Source.Objects.Overworld
 
         public Player(int X, int Y) : base(null, new Point(X, Y), new Point(16, 16), new Point(16, 16), Color.White)
         {
-            // Create Animations
-            CreateAnimation("idle", 0, 0);
-            CreateAnimation("walk", 1, 2);
+            // TODO: Create Animations
         }
 
         public override void OnUpdate(GameTime gameTime)
@@ -50,6 +47,7 @@ namespace LudumRPG.Source.Objects.Overworld
                     Y += walkSpeed;
                 }
 
+                // Horizontal and Vertical Movement Bools
                 if (HoldLeft() || HoldRight())
                 {
                     movingHorizontal = true;
@@ -67,21 +65,7 @@ namespace LudumRPG.Source.Objects.Overworld
                     movingVertical = false;
                 }
 
-                // Animations
-
-                // Idle
-                if (!HoldLeft()
-                    && !HoldRight()
-                    && !HoldUp()
-                    && !HoldDown())
-                {
-                    PlayAnimation("idle");
-                }
-                // Walking
-                else
-                {
-                    PlayAnimation("walk");
-                }
+                // TODO: Play Animations
             }
         }
     }

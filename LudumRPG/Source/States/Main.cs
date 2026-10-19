@@ -76,11 +76,14 @@ namespace LudumRPG.Source.States
             }
 
             // --- Reset ---
+            // Scrapped for now. Resetting the battle state is a little too daunting -Snowman64
 
+            /*
             if (KeyPress(Keys.R))
             {
                 SwitchState(title);
             }
+            */
         }
 
         public override void OnDraw(SpriteBatch spriteBatch)

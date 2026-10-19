@@ -5,10 +5,10 @@
  * Templates:
  * 
  * To Update:
- * public override void Update(GameTime gameTime)
+ * public override void Update(GameTime gameTime);
  * 
  * To Draw:
- * public override void OnDraw(SpriteBatch spriteBatch)
+ * public override void OnDraw(SpriteBatch spriteBatch);
  */
 
 using System;
@@ -94,28 +94,28 @@ namespace LudumRPG.Source.States
         /// <summary>
         /// Switches the current state to another.
         /// </summary>
-        /// <param name="newState">The new state to switch to.</param>
-        public void SwitchState(State newState)
+        /// <param name="nextState">The next state to switch to.</param>
+        public void SwitchState(State nextState)
         {
             // Reset Current State
             OnReset();
 
-            // Switch to New State
-            main.currentState = newState;
-
             // Reset Next State
-            newState.OnReset();
+            nextState.OnReset();
+
+            // Switch to Next State
+            main.currentState = nextState;
         }
 
         /// <summary>
         /// Switches the current state to another.
         /// </summary>
-        /// <param name="newState">The new state to switch to.</param>
-        /// <param name="entry">The entry condition for the new state.</param>
-        public void SwitchState(State newState, bool entry)
+        /// <param name="nextState">The next state to switch to.</param>
+        /// <param name="entry">The entry condition for the next state.</param>
+        public void SwitchState(State nextState, bool entry)
         {
-            // Switch to New State IF Condition is Met
-            if (entry) SwitchState(newState);
+            // Switch to Next State IF Condition is met
+            if (entry) SwitchState(nextState);
         }
 
         public virtual void OnUpdate(GameTime gameTime)

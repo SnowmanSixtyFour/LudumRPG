@@ -135,6 +135,8 @@ namespace LudumRPG.Source
 
             Assets.computer = content.Load<Texture2D>("Assets/Images/Overworld/ComputerPlaceholder"); // Change to remove Placeholder
 
+            Assets.portraitBG = content.Load<Texture2D>("Assets/Images/GUI/portraitBG");
+
             Assets.tallPortraitNormal = content.Load<Texture2D>("Assets/Images/GUI/Portrait/tallPortraitNormal");
             Assets.tallPortraitConfused = content.Load<Texture2D>("Assets/Images/GUI/Portrait/tallPortraitConfused");
             Assets.tallPortraitExcited = content.Load<Texture2D>("Assets/Images/GUI/Portrait/tallPortraitExcited");
@@ -183,6 +185,9 @@ namespace LudumRPG.Source
     internal class Assets
     {
         public static Texture2D
+            // GUIs
+            portraitBG,
+
             // Portraits
             tallPortraitNormal,
             tallPortraitConfused,
