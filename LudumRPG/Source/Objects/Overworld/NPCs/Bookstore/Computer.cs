@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
+using LudumRPG.Source.Objects.Battle.Characters;
 
 namespace LudumRPG.Source.Objects.Overworld.NPCs.Bookstore
 {

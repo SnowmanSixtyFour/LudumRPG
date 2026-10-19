@@ -29,12 +29,24 @@ namespace LudumRPG.Source.Objects.Battle.Characters
         public bool defense = false;
         public bool isJumping { get { return jumping; } private set { jumping = value; } }
 
+        // Character Values
+        protected int
+            HP, level,
+
+            maxLevel = 99,
+            maxHP = 20;
+        protected float jumpPitch = 0.0f;
+
         public PartyMember(Keys jumpKey, Buttons jumpButton, Texture2D texture, Point location, Point size, Point sheetSize, Color color) : base(texture, location, size, sheetSize, color)
         {
             // Set Properties
             this.startLocation = location;
             this.jumpKey = jumpKey;
             this.jumpButton = jumpButton;
+
+            // Set Values
+            this.level = 1; // Doesnt matter for the ludum dare build :P
+            this.HP = maxHP;
         }
 
         public override void OnUpdate(GameTime gameTime)
@@ -73,7 +85,7 @@ namespace LudumRPG.Source.Objects.Battle.Characters
 
                         jumping = true;
 
-                        // TODO: Play Jump SFX
+                        SFX.jump.Play(1.0f, jumpPitch, 0.0f);
                     }
                 }
             }

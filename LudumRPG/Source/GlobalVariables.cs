@@ -140,6 +140,9 @@ namespace LudumRPG.Source
 
             Assets.computer = content.Load<Texture2D>("Assets/Images/Overworld/ComputerPlaceholder"); // Change to remove Placeholder
 
+            Assets.dialogHUD = content.Load<Texture2D>("Assets/Images/GUI/HUDs/dialogHUD");
+            Assets.mainBattleHUD = content.Load<Texture2D>("Assets/Images/GUI/HUDs/mainBattleHUD");
+
             Assets.portraitBG = content.Load<Texture2D>("Assets/Images/GUI/portraitBG");
 
             Assets.tallPortraitNormal = content.Load<Texture2D>("Assets/Images/GUI/Portrait/tallPortraitNormal");
@@ -166,6 +169,28 @@ namespace LudumRPG.Source
             SFX.dialogContinue = content.Load<SoundEffect>("Assets/Audio/SFX/Dialog/dialogContinue");
 
             SFX.computerStartup = content.Load<SoundEffect>("Assets/Audio/SFX/Cutscene/computerStartup");
+
+            SFX.jump = content.Load<SoundEffect>("Assets/Audio/SFX/Battle/jump");
+            SFX.hurt1 = content.Load<SoundEffect>("Assets/Audio/SFX/Battle/hurt1");
+            SFX.hurt2 = content.Load<SoundEffect>("Assets/Audio/SFX/Battle/hurt2");
+        }
+
+        /// <summary>
+        /// Plays a random hurt sound.
+        /// </summary>
+        public static void PlayHurtSound()
+        {
+            Random random = new Random();
+            int randomNum = random.Next(0, 2);
+
+            if (randomNum == 0)
+            {
+                SFX.hurt1.Play();
+            }
+            else
+            {
+                SFX.hurt2.Play();
+            }
         }
     }
 
@@ -185,13 +210,20 @@ namespace LudumRPG.Source
             dialog, dialogContinue,
 
             // Cutscenes
-            computerStartup;
+            computerStartup,
+
+            // Battle
+            jump,
+            hurt1, hurt2;
     }
 
     internal class Assets
     {
         public static Texture2D
             // GUIs
+            dialogHUD,
+            mainBattleHUD,
+
             portraitBG,
 
             // Portraits

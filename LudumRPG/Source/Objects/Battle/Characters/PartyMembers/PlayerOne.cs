@@ -12,6 +12,7 @@ namespace LudumRPG.Source.Objects.Battle.Characters.PartyMembers
     {
         public PlayerOne(Point startingLocation) : base(Keys.Z, Buttons.A, Global.noImg, startingLocation, new Point(16, 16), new Point(16, 16), Color.White)
         {
+            this.jumpPitch = 0.5f;
         }
     }
 }

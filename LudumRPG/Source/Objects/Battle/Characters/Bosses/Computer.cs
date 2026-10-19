@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework;
 
 namespace LudumRPG.Source.Objects.Battle.Characters.Bosses
 {
-    internal class Computer : Character
+    internal class Computer : Boss
     {
         public Computer(Point startingLocation) : base(Global.noImg, startingLocation, new Point(16, 16), new Point(16, 16), Color.White)
         {

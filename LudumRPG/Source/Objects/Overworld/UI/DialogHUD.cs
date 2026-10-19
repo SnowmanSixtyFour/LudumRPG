@@ -43,9 +43,9 @@ namespace LudumRPG.Source.Objects.Overworld.UI
 
         public DialogHUD()
         {
-            dialogBox = new StaticSprite(null, new Rectangle(0, 148, Global.resWidth, Global.resHeight), Color.Black * 0.5f);
+            dialogBox = new StaticSprite(Assets.dialogHUD, new Rectangle(0, 148, Global.resWidth, 76), Color.White);
 
-            Rectangle portraitRect = new Rectangle(Global.resWidth - 72, 154, 64, 64);
+            Rectangle portraitRect = new Rectangle(Global.resWidth - 70, 154, 64, 64);
             portraitBG = new StaticSprite(Assets.portraitBG, portraitRect, Color.White, true);
             portrait = new StaticSprite(null, portraitRect, invisible);
 

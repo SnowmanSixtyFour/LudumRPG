@@ -103,5 +103,15 @@ namespace LudumRPG.Source.Graphics
         {
             this.color = newColor;
         }
+
+        public void SetWidth(int newWidth)
+        {
+            this.destRect.Width = newWidth;
+        }
+
+        public void SetHeight(int newHeight)
+        {
+            this.destRect.Height = newHeight;
+        }
     }
 }
