@@ -34,7 +34,10 @@ namespace LudumRPG.Source.Data
             intro, introEnd,
 
             // Battle Intro
-            battleIntro, tutorial;
+            battleIntro, tutorial,
+
+            // Ending
+            credits;
 
         public static void LoadDialog()
         {
@@ -78,6 +81,33 @@ namespace LudumRPG.Source.Data
                 ready, press {Global.enterKey} to proceed.
                 """;
 
+            String endCredits =
+                """
+                Ludum RPG
+
+
+
+                Developers
+
+
+
+                Snowman64 - Programmer
+
+                ShawSure - Artist
+
+
+
+                Special Thanks
+
+
+
+                Timothy Lottes
+
+                Eric Fredricksen
+
+                And you! Thanks for playing!
+                """;
+
             // --- Set Dialog ---
 
             intro = new Dialog("Intro");
@@ -102,6 +132,9 @@ namespace LudumRPG.Source.Data
             tutorial.Lines.Add(new DialogLine("", "This won't be an easy battle...\n\nYou'll have to differentiate\neach button for both girls!"));
             tutorial.Lines.Add(new DialogLine("", $"Use {Global.enterKey} to control {name1},\n\nand {Global.backKey} to control {name2}!"));
             tutorial.Lines.Add(new DialogLine("", $"Simple, right? {Global.enterKey}, then {Global.backKey}!\n\nGood luck!"));
+
+            credits = new Dialog("End Credits");
+            credits.Lines.Add(new DialogLine("", endCredits));
         }
     }
 }

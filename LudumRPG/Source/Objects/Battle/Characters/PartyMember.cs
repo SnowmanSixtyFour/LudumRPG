@@ -70,25 +70,31 @@ namespace LudumRPG.Source.Objects.Battle.Characters
             // Defense Mode
             if (defense)
             {
-                // --- Jumping ---
-
-                // Initiate Jump
-                if (!jumping)
-                {
-                    if (KeyDown(jumpKey) || ButtonDown(jumpButton))
-                    {
-                        yVelocity = -jumpIncrement;
-
-                        jumping = true;
-
-                        SFX.jump.Play(1.0f, jumpPitch, 0.0f);
-                    }
-                }
+                // Allow the party member to jump
+                Jump();
             }
 
             // Offense Mode
             else
             {
+            }
+        }
+
+        /// <summary>
+        /// Makes the party member jump in the air.
+        /// </summary>
+        public void Jump()
+        {
+            if (!jumping)
+            {
+                if (KeyDown(jumpKey) || ButtonDown(jumpButton))
+                {
+                    yVelocity = -jumpIncrement;
+
+                    jumping = true;
+
+                    SFX.jump.Play(1.0f, jumpPitch, 0.0f);
+                }
             }
         }
 

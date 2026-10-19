@@ -19,9 +19,11 @@ namespace LudumRPG.Source.States
         public Overworld overworld;
         public BattleIntro battleIntro;
         public Battle battle;
+        public Ending ending;
 
         // Overlay
         private StaticSprite pauseOverlay;
+        private Text pauseText;
 
         public Main()
         {
@@ -30,12 +32,14 @@ namespace LudumRPG.Source.States
             overworld = new Overworld();
             battleIntro = new BattleIntro();
             battle = new Battle();
+            ending = new Ending();
 
             // Set Current State
             currentState = battle;
 
             // Set Overlay
             pauseOverlay = new StaticSprite(null, new Rectangle(0, 0, Global.resWidth, Global.resHeight), Color.Black * 0.5f);
+            pauseText = new Text("Paused", new Vector2(106, 100), Color.White);
         }
 
         public override void OnUpdate(GameTime gameTime)
@@ -102,6 +106,7 @@ namespace LudumRPG.Source.States
                 if (Global.paused)
                 {
                     pauseOverlay.Draw(spriteBatch);
+                    pauseText.Draw(spriteBatch);
                 }
             }
         }

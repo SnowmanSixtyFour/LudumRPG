@@ -67,6 +67,12 @@
 /processorParam:Quality=Best
 /build:Assets/Audio/SFX/GUI/confirm.wav
 
+#begin Assets/Audio/SFX/GUI/select.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Assets/Audio/SFX/GUI/select.wav
+
 #begin Assets/Fonts/Arial.png
 /importer:TextureImporter
 /processor:FontTextureProcessor

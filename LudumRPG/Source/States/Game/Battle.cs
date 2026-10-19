@@ -102,8 +102,14 @@ namespace LudumRPG.Source.States
                 // Switch Button
                 if (PressLeft() || PressRight())
                 {
+                    SFX.select.Play();
+
                     battleHUD.SwitchButton();
                 }
+
+                // Wrong input (other party member jumps)
+                if (currentTurn == 0 && PressCancel()) playerTwo.Jump();
+                if (currentTurn == 1 && PressConfirm()) playerOne.Jump();
 
                 // Player One Options
                 if (currentTurn == 0 && PressConfirm())
@@ -163,10 +169,6 @@ namespace LudumRPG.Source.States
                         }
                     }
                 }
-
-                // Wrong input
-                if (currentTurn == 0 && PressCancel()) SFX.no.Play();
-                if (currentTurn == 1 && PressConfirm()) SFX.no.Play();
             }
 
             // Boss Turn
