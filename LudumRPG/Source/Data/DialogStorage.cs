@@ -23,14 +23,23 @@ namespace LudumRPG.Source.Data
 {
     internal class DialogStorage
     {
+        public static readonly String
+            name1 = "Girl 1",
+            name2 = "Girl 2",
+            computerName = "BookOS",
+            unknownName = "???";
+
         public static Dialog
             intro,
 
+            introEnd,
             battleIntro;
 
         public static void LoadDialog()
         {
-            // --- Set Large Strings ---
+            // --- Set Strings ---
+
+            // Large Strings
 
             String bookOsBootup =
                 $"""
@@ -65,12 +74,21 @@ namespace LudumRPG.Source.Data
             // --- Set Dialog ---
 
             intro = new Dialog("Intro");
-            intro.Lines.Add(new DialogLine("", "Hello there!"));
-            intro.Lines.Add(new DialogLine("", "Welcome to Ludum RPG!"));
+            intro.Lines.Add(new DialogLine(unknownName, $"Hey, {name1}?", Global.shortPortraitNormal));
+            intro.Lines.Add(new DialogLine(name1, $"What's up, {name2}?", Global.tallPortraitNormal));
+            intro.Lines.Add(new DialogLine(name2, "I've been hearing a\nweird noise at the\nback of the store\nall day...", Global.shortPortraitConfused));
+            intro.Lines.Add(new DialogLine(name2, "What do you think\nit could be...?", Global.shortPortraitConfused));
+            intro.Lines.Add(new DialogLine(name1, "Huh? Weird noise?", Global.tallPortraitConfused));
+            intro.Lines.Add(new DialogLine(name1, "Let's check it out!", Global.tallPortraitExcited));
+
+            introEnd = new Dialog("Found Computer");
+            introEnd.Lines.Add(new DialogLine(name1, $"{name2}, was this what\nwas scaring you?", Global.tallPortraitConfused));
+            introEnd.Lines.Add(new DialogLine(name2, "I guess so.\nI forgot we even had\nthis machine.", Global.shortPortraitNormal));
+            introEnd.Lines.Add(new DialogLine(name1, "Hang on...\nIt's already been\nturned on?", Global.tallPortraitNormal));
 
             battleIntro = new Dialog("Battle Intro");
-            battleIntro.Lines.Add(new DialogLine("BookOS", bookOsBootup));
-            battleIntro.Lines.Add(new DialogLine("BookOS", bookOsLine));
+            battleIntro.Lines.Add(new DialogLine(computerName, bookOsBootup));
+            battleIntro.Lines.Add(new DialogLine(computerName, bookOsLine));
         }
     }
 }

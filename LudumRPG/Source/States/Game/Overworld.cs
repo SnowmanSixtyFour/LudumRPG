@@ -61,6 +61,14 @@ namespace LudumRPG.Source.States
 
             if (player.Bounds.Intersects(computer.Bounds) && PressConfirm())
             {
+                if (dialogHUD.dialog != DialogStorage.introEnd)
+                {
+                    dialogHUD.setDialog(DialogStorage.introEnd);
+                }
+            }
+
+            if (dialogHUD.dialog == DialogStorage.introEnd && dialogHUD.endOfDialog)
+            {
                 SwitchState(main.battleIntro);
             }
 
