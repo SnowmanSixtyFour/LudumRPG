@@ -30,10 +30,11 @@ namespace LudumRPG.Source.Data
             unknownName = "???";
 
         public static Dialog
-            intro,
+            // Overworld
+            intro, introEnd,
 
-            introEnd,
-            battleIntro;
+            // Battle Intro
+            battleIntro, tutorial;
 
         public static void LoadDialog()
         {
@@ -95,6 +96,12 @@ namespace LudumRPG.Source.Data
             battleIntro = new Dialog("Battle Intro");
             battleIntro.Lines.Add(new DialogLine(computerName, bookOsBootup));
             battleIntro.Lines.Add(new DialogLine(computerName, bookOsLine));
+
+            tutorial = new Dialog("Battle Tutorial");
+            tutorial.Lines.Add(new DialogLine("", "Wait, wait!!!"));
+            tutorial.Lines.Add(new DialogLine("", "This won't be an easy battle...\n\nYou'll have to differentiate\neach button for both girls!"));
+            tutorial.Lines.Add(new DialogLine("", $"Use {Global.enterKey} to control {name1},\n\nand {Global.backKey} to control {name2}!"));
+            tutorial.Lines.Add(new DialogLine("", $"Simple, right? {Global.enterKey}, then {Global.backKey}!\n\nGood luck!"));
         }
     }
 }

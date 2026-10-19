@@ -46,7 +46,7 @@ namespace LudumRPG.Source.Objects.Overworld.UI
             dialogBox = new StaticSprite(Assets.dialogHUD, new Rectangle(0, 148, Global.resWidth, 76), Color.White);
 
             Rectangle portraitRect = new Rectangle(Global.resWidth - 70, 154, 64, 64);
-            portraitBG = new StaticSprite(Assets.portraitBG, portraitRect, Color.White, true);
+            portraitBG = new StaticSprite(Assets.portraitBG, portraitRect, invisible, true);
             portrait = new StaticSprite(null, portraitRect, invisible);
 
             name = new Text("", new Vector2(15, 154), Color.White);
@@ -79,10 +79,12 @@ namespace LudumRPG.Source.Objects.Overworld.UI
                 {
                     this.portrait.SetTexture(dialog.Lines[currentLine].Portrait);
 
+                    this.portraitBG.SetColor(Color.White);
                     this.portrait.SetColor(Color.White);
                 }
                 else
                 {
+                    this.portraitBG.SetColor(invisible);
                     this.portrait.SetColor(invisible);
                 }
 

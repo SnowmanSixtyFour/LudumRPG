@@ -165,6 +165,14 @@ namespace LudumRPG.Source.States
                 }
             }
 
+            // Boss Turn
+            if (currentTurn > 1)
+            {
+                // If possible, set players to Defensive Mode
+                if (playerOne.HP > 0) playerOne.defense = true;
+                if (playerTwo.HP > 0) playerTwo.defense = true;
+            }
+
             // Update Properties
             if (!playerOne.defense && !playerTwo.defense) defensive = false;
             else defensive = true;

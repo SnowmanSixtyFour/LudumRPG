@@ -165,6 +165,7 @@ namespace LudumRPG.Source
 
             SFX.confirm = content.Load<SoundEffect>("Assets/Audio/SFX/GUI/confirm");
             SFX.no = content.Load<SoundEffect>("Assets/Audio/SFX/Battle/no");
+            SFX.wait = content.Load<SoundEffect>("Assets/Audio/SFX/Battle/wait");
 
             SFX.dialog = content.Load<SoundEffect>("Assets/Audio/SFX/Dialog/dialog");
             SFX.dialogContinue = content.Load<SoundEffect>("Assets/Audio/SFX/Dialog/dialogContinue");
@@ -205,7 +206,7 @@ namespace LudumRPG.Source
     {
         public static SoundEffect
             // GUI
-            confirm, no,
+            confirm, no, wait,
 
             // Dialog
             dialog, dialogContinue,

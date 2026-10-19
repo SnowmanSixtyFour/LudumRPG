@@ -13,22 +13,49 @@ namespace LudumRPG.Source.States
     internal class BattleIntro : State
     {
         private BattleIntroText text;
+        private bool textFinished = false;
+
+        // Reimplementing the previous Dialog HUD for the tutorial tips
+        private DialogHUD dialogHUD;
 
         public BattleIntro()
         {
             // Set Battle Intro Text
             text = new BattleIntroText();
             text.setDialog(DialogStorage.battleIntro);
+
+            dialogHUD = new DialogHUD();
+            dialogHUD.setDialog(DialogStorage.tutorial);
         }
 
         public override void OnUpdate(GameTime gameTime)
         {
-            // End Scene
+            // Progress Text
             if (PressConfirm())
             {
                 text.Proceed();
             }
+
+            // Start Tutorial Dialog
             if (text.endOfDialog)
+            {
+                if (!textFinished)
+                {
+                    SFX.wait.Play();
+
+                    textFinished = true;
+                }
+
+                dialogHUD.Show();
+            }
+
+            if (PressConfirm() && textFinished)
+            {
+                dialogHUD.Proceed();
+            }
+
+            // End Scene
+            if (dialogHUD.endOfDialog)
             {
                 SFX.confirm.Play();
 
@@ -37,6 +64,7 @@ namespace LudumRPG.Source.States
 
             // Update Objects
             text.Update(gameTime);
+            dialogHUD.Update(gameTime);
         }
 
         public override void OnReset()
@@ -44,6 +72,10 @@ namespace LudumRPG.Source.States
             // Reset Text
             text.setDialog(DialogStorage.battleIntro);
             text.Reset();
+
+            dialogHUD.setDialog(DialogStorage.tutorial);
+            dialogHUD.ResetTypewriter();
+            dialogHUD.Hide();
         }
 
         public override void OnDraw(SpriteBatch spriteBatch)
@@ -51,6 +83,7 @@ namespace LudumRPG.Source.States
             graphicsDevice.Clear(Color.Black);
 
             text.Draw(spriteBatch);
+            if (textFinished) dialogHUD.Draw(spriteBatch);
         }
     }
 }
