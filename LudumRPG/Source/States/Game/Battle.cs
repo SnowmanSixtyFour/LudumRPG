@@ -179,6 +179,12 @@ namespace LudumRPG.Source.States
                 if (playerTwo.HP > 0) playerTwo.defense = true;
             }
 
+            // Go to Ending
+            if (computer.HP <= 0)
+            {
+                SwitchState(main.ending);
+            }
+
             // Update Properties
             if (!playerOne.defense && !playerTwo.defense) defensive = false;
             else defensive = true;
