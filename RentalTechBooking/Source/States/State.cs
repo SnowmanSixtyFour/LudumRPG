@@ -1,0 +1,294 @@
+﻿// The template class for a state in the game.
+// A state is a different scene.
+
+/*
+ * Templates:
+ * 
+ * To Update:
+ * public override void Update(GameTime gameTime);
+ * 
+ * To Draw:
+ * public override void OnDraw(SpriteBatch spriteBatch);
+ */
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Windows.Gaming.Input;
+using Windows.Gaming.UI;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Media;
+using RentalTechBooking.Source.Data.Files;
+using RentalTechBooking.Source.Objects;
+
+namespace RentalTechBooking.Source.States
+{
+    internal class State
+    {
+        public GraphicsDeviceManager graphics = MainGame.publicGraphics;
+        public GraphicsDevice graphicsDevice = MainGame.publicGraphicsDevice;
+
+        // State variables
+        public Main main;
+        public KeyboardState keyboard, previousKeyboard;
+        public GamePadState gamepad, previousGamepad;
+
+        public int screenWidth, screenHeight;
+        public Camera cam;
+
+        // Pausing
+        public bool canPause = true;
+
+        // Files
+        private OptionsFile options = MainGame.options;
+
+        public State()
+        {
+            // Set Camera
+            cam = new Camera(this.graphicsDevice, Global.resWidth, Global.resHeight);
+        }
+
+        public void Update(GameTime gameTime, Main main)
+        {
+            // Update state variables
+            this.main = main;
+            screenWidth = graphicsDevice.PresentationParameters.Bounds.Width;
+            screenHeight = graphicsDevice.PresentationParameters.Bounds.Height;
+
+            // Set Controls
+            keyboard = Keyboard.GetState();
+            gamepad = GamePad.GetState(PlayerIndex.One);
+
+            // Override Update
+            OnUpdate(gameTime);
+
+            // Update Controls
+            previousKeyboard = keyboard;
+            previousGamepad = gamepad;
+        }
+
+        // Music
+
+        public void ChangeSong(Song song)
+        {
+            if (MediaPlayer.Queue.ActiveSong != song)
+            {
+                MediaPlayer.Play(song);
+            }
+        }
+
+        public void StopSong()
+        {
+            MediaPlayer.Stop();
+        }
+
+        // Data Files
+
+        public void SaveFile(Data.DataFile file)
+        {
+        }
+
+        public void LoadFile(Data.DataFile file)
+        {
+        }
+
+        public void SaveToOptions()
+        {
+            // Update Properties
+            options.Width = Global.windowWidth;
+            options.Height = Global.windowHeight;
+            options.Fullscreen = Global.fullscreen;
+
+            // Save to File
+            options.Save();
+        }
+
+        /// <summary>
+        /// Switches the current state to another.
+        /// </summary>
+        /// <param name="nextState">The next state to switch to.</param>
+        public void SwitchState(State nextState)
+        {
+            // Reset Current State
+            OnReset();
+
+            // Reset Next State
+            nextState.OnReset();
+
+            // Switch to Next State
+            main.currentState = nextState;
+        }
+
+        /// <summary>
+        /// Switches the current state to another.
+        /// </summary>
+        /// <param name="nextState">The next state to switch to.</param>
+        /// <param name="entry">The entry condition for the next state.</param>
+        public void SwitchState(State nextState, bool entry)
+        {
+            // Switch to Next State IF Condition is met
+            if (entry) SwitchState(nextState);
+        }
+
+        public virtual void OnUpdate(GameTime gameTime)
+        {
+        }
+
+        public virtual void OnReset()
+        {
+        }
+
+        public void Draw(SpriteBatch spriteBatch)
+        {
+            OnDraw(spriteBatch);
+        }
+
+        /// <summary>
+        /// The method to override when drawing in the state.
+        /// </summary>
+        /// <param name="spriteBatch">The spriteBatch used in Draw.</param>
+        public virtual void OnDraw(SpriteBatch spriteBatch)
+        {
+        }
+
+        /// <summary>
+        /// Quits the game. Use with caution.
+        /// </summary>
+        public void ExitGame()
+        {
+            Global.quit = true;
+        }
+
+        // Controls
+
+        public bool KeyPress(Keys key)
+        {
+            if (keyboard.IsKeyUp(key) && previousKeyboard.IsKeyDown(key))
+            {
+                return true;
+            }
+            else return false;
+        }
+
+        public bool KeyDown(Keys key)
+        {
+            if (keyboard.IsKeyDown(key))
+            {
+                return true;
+            }
+            else return false;
+        }
+
+        public bool ButtonPress(Buttons button)
+        {
+            if (gamepad.IsConnected)
+            {
+                if (gamepad.IsButtonUp(button) && previousGamepad.IsButtonDown(button))
+                {
+                    return true;
+                }
+                else return false;
+
+            }
+            else return false;
+        }
+
+        public bool ButtonDown(Buttons button)
+        {
+            if (gamepad.IsConnected)
+            {
+                if (gamepad.IsButtonDown(button))
+                {
+                    return true;
+                }
+                else return false;
+
+            }
+            else return false;
+        }
+
+        // UI Controls
+
+        public bool PressPause()
+        {
+            if (KeyPress(Keys.Escape) || ButtonPress(Buttons.Start)) return true;
+            else return false;
+        }
+
+        public bool PressConfirm()
+        {
+            if (KeyPress(Keys.Z) || KeyPress(Keys.Enter) || ButtonPress(Buttons.A)) return true;
+            else return false;
+        }
+
+        public bool PressCancel()
+        {
+            if (KeyPress(Keys.X) || KeyPress(Keys.Back) || ButtonPress(Buttons.B)) return true;
+            else return false;
+        }
+
+        public bool ControllerConnected()
+        {
+            if (gamepad.IsConnected) return true;
+            else return false;
+        }
+
+        public bool ControllerConnectivityChanged()
+        {
+            if (previousGamepad.IsConnected && !gamepad.IsConnected || gamepad.IsConnected && !previousGamepad.IsConnected) return true;
+            else return false;
+        }
+
+        public bool PressUp()
+        {
+            if (KeyPress(Keys.Up) || ButtonPress(Buttons.LeftThumbstickUp) || ButtonPress(Buttons.DPadUp)) return true;
+            else return false;
+        }
+
+        public bool PressDown()
+        {
+            if (KeyPress(Keys.Down) || ButtonPress(Buttons.LeftThumbstickDown) || ButtonPress(Buttons.DPadDown)) return true;
+            else return false;
+        }
+
+        public bool PressLeft()
+        {
+            if (KeyPress(Keys.Left) || ButtonPress(Buttons.LeftThumbstickLeft) || ButtonPress(Buttons.DPadLeft)) return true;
+            else return false;
+        }
+
+        public bool PressRight()
+        {
+            if (KeyPress(Keys.Right) || ButtonPress(Buttons.LeftThumbstickRight) || ButtonPress(Buttons.DPadRight)) return true;
+            else return false;
+        }
+
+        public bool HoldUp()
+        {
+            if (KeyDown(Keys.Up) || ButtonDown(Buttons.LeftThumbstickUp) || ButtonDown(Buttons.DPadUp)) return true;
+            else return false;
+        }
+
+        public bool HoldDown()
+        {
+            if (KeyDown(Keys.Down) || ButtonDown(Buttons.LeftThumbstickDown) || ButtonDown(Buttons.DPadDown)) return true;
+            else return false;
+        }
+
+        public bool HoldLeft()
+        {
+            if (KeyDown(Keys.Left) || ButtonDown(Buttons.LeftThumbstickLeft) || ButtonDown(Buttons.DPadLeft)) return true;
+            else return false;
+        }
+
+        public bool HoldRight()
+        {
+            if (KeyDown(Keys.Right) || ButtonDown(Buttons.LeftThumbstickRight) || ButtonDown(Buttons.DPadRight)) return true;
+            else return false;
+        }
+    }
+}

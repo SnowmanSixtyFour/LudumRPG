@@ -5,10 +5,10 @@
 .vs/
 
 # Build
-/LudumRPG/bin
-/LudumRPG/obj
-/LudumRPG/Content/bin
-/LudumRPG/Content/obj
-/LudumRPGLauncher/bin
-/LudumRPGLauncher/obj
+/RentalTechBooking/bin
+/RentalTechBooking/obj
+/RentalTechBooking/Content/bin
+/RentalTechBooking/Content/obj
+/RentalTechBookingLauncher/bin
+/RentalTechBookingLauncher/obj
 /packages
