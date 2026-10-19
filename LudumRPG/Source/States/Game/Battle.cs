@@ -163,6 +163,10 @@ namespace LudumRPG.Source.States
                         }
                     }
                 }
+
+                // Wrong input
+                if (currentTurn == 0 && PressCancel()) SFX.no.Play();
+                if (currentTurn == 1 && PressConfirm()) SFX.no.Play();
             }
 
             // Boss Turn

@@ -32,7 +32,7 @@ namespace LudumRPG.Source.States
             battle = new Battle();
 
             // Set Current State
-            currentState = battleIntro;
+            currentState = title;
 
             // Set Overlay
             pauseOverlay = new StaticSprite(null, new Rectangle(0, 0, Global.resWidth, Global.resHeight), Color.Black * 0.5f);
