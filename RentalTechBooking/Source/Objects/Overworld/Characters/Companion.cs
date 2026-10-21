@@ -18,9 +18,14 @@ namespace RentalTechBooking.Source.Objects.Overworld
         public bool moving { get; private set; } = false;
         public bool behindPlayer { get; private set; } = true;
 
-        public Companion(Player player) : base(null, new Point(player.X, player.Y - 22), new Point(16, 16), new Point(16, 16), Color.White)
+        public Companion(Player player) : base(Assets.beenie, new Point(player.X, player.Y - 22), new Point(396, 61), new Point(33, 61), Color.White)
         {
-            // TODO: Create Animations
+            CreateAnimation("idle", 0, 0);
+
+            CreateAnimation("walkDown", 0, 3);
+            CreateAnimation("walkLeft", 4, 5);
+            CreateAnimation("walkRight", 6, 7);
+            CreateAnimation("walkUp", 8, 11);
         }
 
         public void Update(GameTime gameTime, Player player)
@@ -33,22 +38,31 @@ namespace RentalTechBooking.Source.Objects.Overworld
                 if (X > (player.X + followDistance))
                 {
                     X -= walkSpeed;
+                    PlayAnimation("walkLeft");
                 }
 
                 if (X < (player.X - followDistance))
                 {
                     X += walkSpeed;
+                    PlayAnimation("walkRight");
                 }
 
                 if (Y > (player.Y + followDistance))
                 {
                     Y -= walkSpeed;
+                    PlayAnimation("walkUp");
                 }
 
                 if (Y < (player.Y - followDistance))
                 {
                     Y += walkSpeed;
+                    PlayAnimation("walkDown");
                 }
+            }
+
+            else
+            {
+                PlayAnimation("idle");
             }
 
             // Player is moving Up / Down

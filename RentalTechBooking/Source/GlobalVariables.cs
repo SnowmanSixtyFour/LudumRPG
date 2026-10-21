@@ -139,6 +139,7 @@ namespace RentalTechBooking.Source
 
             Global.crtVignette = content.Load<Texture2D>("Assets/Images/Overlay/crtVignette");
 
+            Assets.beenie = content.Load<Texture2D>("Assets/Images/Overworld/Beenie");
             Assets.computer = content.Load<Texture2D>("Assets/Images/Overworld/ComputerPlaceholder"); // Change to remove Placeholder
 
             Assets.dialogHUD = content.Load<Texture2D>("Assets/Images/GUI/HUDs/dialogHUD");
@@ -262,6 +263,7 @@ namespace RentalTechBooking.Source
             shortPortraitConfused,
 
             // NPCs
+            beenie,
             computer;
     }
 }
